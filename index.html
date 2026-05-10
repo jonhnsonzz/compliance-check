@@ -3,27 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>企业合规自查</title>
+<title>企业合规自查 — 证照办理指南</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:#f0f2f5;color:#1a1a2e;padding:20px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;padding:20px}
 .container{max-width:640px;margin:0 auto}
-.card{background:#fff;border-radius:16px;padding:28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
-h1{font-size:24px;text-align:center;margin-bottom:4px}
-.sub{text-align:center;color:#888;font-size:13px;margin-bottom:24px;line-height:1.6}
+.card{background:#fff;border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+h1{font-size:22px;text-align:center;margin-bottom:4px}
+.sub{text-align:center;color:#888;font-size:13px;margin-bottom:20px}
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
-.form-group select{width:100%;padding:11px 12px;border:2px solid #e0e0e0;border-radius:10px;font-size:14px;background:#fff;min-height:120px}
+.form-group select{width:100%;padding:11px 12px;border:2px solid #e0e0e0;border-radius:10px;font-size:14px;background:#fff;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 .form-group select:focus{outline:none;border-color:#4361ee}
-.form-group select option{padding:6px 4px}
-.form-hint{font-size:12px;color:#888;margin-top:4px}
 .btn{display:block;width:100%;padding:13px;background:#4361ee;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;text-align:center;transition:background .2s}
 .btn:hover{background:#3651d4}
 .btn:disabled{opacity:.5;cursor:not-allowed}
-.btn.outline{background:transparent;color:#4361ee;border:2px solid #4361ee;margin-top:12px}
+.btn.green{background:#2ec4b6}
+.btn.green:hover{background:#28a89d}
+.btn.outline{background:transparent;color:#4361ee;border:2px solid #4361ee;margin-top:10px}
 .btn.outline:hover{background:#f0f3ff}
 .hide{display:none}
-.section-title{font-size:16px;font-weight:700;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #f0f0f0;display:flex;align-items:center;gap:8px}
+.section-title{font-size:15px;font-weight:700;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #f0f0f0;display:flex;align-items:center;gap:8px}
 .check-item{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f5f5f5;gap:12px}
 .check-item:last-child{border:none}
 .check-item .info{flex:1}
@@ -40,14 +40,29 @@ h1{font-size:24px;text-align:center;margin-bottom:4px}
 .verdict-icon{font-size:48px}
 .verdict-text{font-size:20px;font-weight:700;margin:8px 0 4px}
 .verdict-sub{font-size:13px;color:#888}
-.guide-item{background:#f8f9ff;border-radius:10px;padding:14px;margin-bottom:10px}
-.guide-item:last-child{margin-bottom:0}
+.guide-item{background:#f8f9ff;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;transition:background .2s}
+.guide-item:hover{background:#f0f3ff}
 .guide-item h4{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.guide-item p{font-size:13px;color:#555;line-height:1.7}
+.guide-item .summary{font-size:13px;color:#555;line-height:1.7}
 .guide-item .meta{display:flex;gap:16px;margin-top:6px;font-size:12px;color:#888;flex-wrap:wrap}
 .guide-item .meta span{display:flex;align-items:center;gap:3px}
 .guide-item .risk-box{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:12px;color:#991b1b;line-height:1.5}
-.ind-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;background:#eef2ff;color:#4361ee;margin-right:4px}
+.guide-item .btn-guide{display:block;width:100%;padding:10px;margin-top:10px;background:#eef2ff;color:#4361ee;border:1.5px solid #c7d2fe;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s}
+.guide-item .btn-guide:hover{background:#dde4ff;border-color:#4361ee}
+.guide-item .btn-guide .arrow{display:inline-block;transition:transform .3s;margin-left:4px}
+.guide-item .btn-guide .arrow.open{transform:rotate(180deg)}
+/* 展开详情 */
+.detail-box{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #e0e0e0}
+.detail-box.show{display:block}
+.detail-box .dl{display:grid;gap:10px}
+.detail-box .dl-item{border-radius:8px;padding:10px 12px}
+.detail-box .dl-item:nth-child(odd){background:#fff}
+.detail-box .dl-item:nth-child(even){background:#f8f9fa}
+.detail-box .dl-label{font-weight:700;font-size:13px;color:#333;margin-bottom:4px;display:flex;align-items:center;gap:4px}
+.detail-box .dl-val{font-size:13px;color:#555;line-height:1.7}
+.detail-box .dl-val ul{margin:4px 0 0 16px}
+.detail-box .dl-val li{margin-bottom:4px;line-height:1.6}
+.detail-box .tip-box{background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:12px;color:#9a3412;line-height:1.5}
 .footer{text-align:center;color:#aaa;font-size:12px;margin-top:24px;line-height:1.8}
 @media(max-width:480px){.card{padding:20px}}
 </style>
@@ -55,26 +70,28 @@ h1{font-size:24px;text-align:center;margin-bottom:4px}
 <body>
 <div class="container">
 
+<!-- ===== 首页 ===== -->
 <div class="card" id="pageHome">
 <h1>🔍 企业合规自查</h1>
-<p class="sub">选择行业 → 勾选已具备的证照 → 出合规报告+办理指南</p>
+<p class="sub">选行业 → 勾证照 → 出具报告+办理指南</p>
 <div class="form-group">
-<label>选择行业（可多选）</label>
-<select id="indSelect" multiple size="9">
-<option value="0">🤖 AI/大模型（3项必备）</option>
-<option value="1">🏥 医疗器械（4项必备）</option>
-<option value="2">💊 生物医药/创新药（3项必备）</option>
-<option value="3">⚡ 新能源/汽车（3项必备）</option>
-<option value="4">🔬 半导体/芯片（2项必备）</option>
-<option value="5">🍜 餐饮/零售（4项必备）</option>
-<option value="6">🛒 电商/跨境电商（2项必备）</option>
-<option value="7">💻 软件/IT服务（1项必备）</option>
+<label>选择行业</label>
+<select id="indSelect">
+<option value="">— 请选择行业 —</option>
+<option value="0">🤖 AI/大模型</option>
+<option value="1">🏥 医疗器械</option>
+<option value="2">💊 生物医药/创新药</option>
+<option value="3">⚡ 新能源/汽车</option>
+<option value="4">🔬 半导体/芯片</option>
+<option value="5">🍜 餐饮/零售</option>
+<option value="6">🛒 电商/跨境电商</option>
+<option value="7">💻 软件/IT服务</option>
 </select>
-<div class="form-hint">按住 Ctrl/Cmd 可多选</div>
 </div>
 <button class="btn" id="btnStart" disabled onclick="goCheck()">开始自查 →</button>
 </div>
 
+<!-- ===== 自查页 ===== -->
 <div class="card hide" id="pageCheck">
 <h1>📋 逐项自查</h1>
 <p class="sub" id="checkSub"></p>
@@ -83,133 +100,452 @@ h1{font-size:24px;text-align:center;margin-bottom:4px}
 <button class="btn outline" onclick="backHome()">← 重新选择行业</button>
 </div>
 
+<!-- ===== 结果页 ===== -->
 <div class="card hide" id="pageResult">
 <div id="resultHead"></div>
 <div id="resultBody"></div>
 <button class="btn outline" onclick="resetAll()">← 重新评估</button>
 </div>
 
-<div class="footer">仅供初步自查参考 · 正式合规以主管部门要求为准</div>
+<div class="footer">仅供初步自查参考 · 正式办理以主管部门要求为准</div>
 </div>
 
 <script>
+// ===================== 数据 =====================
 const industries = [
   {name:'AI/大模型',icon:'🤖',
    items:[
-    {name:'算法备案',must:true,risk:'高',desc:'有AI推荐/排序/生成功能的必须备案',penalty:'责令整改+罚款；拒不改正最高停服+罚款50万',
-     advice:'登录 beian.cac.gov.cn 在线提交备案，填写算法信息、安全评估报告等材料。建议在AI功能上线前就启动备案。',
-     time:'2-3个月',proc:'准备材料→在线提交→网信办审核→取得备案编号'},
-    {name:'生成式AI备案',must:true,risk:'高',desc:'提供生成式AI服务的必须备案',penalty:'未备案不得上线，违者责令整改+罚款',
-     advice:'在CAC备案系统中选择"生成式AI"类别提交。需提供模型说明、训练数据来源、内容安全措施等。',
-     time:'2-3个月',proc:'模型安全评估→材料准备→提交CAC→审核通过'},
-    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭',
-     advice:'购买国内服务器后，在服务商控制台提交备案申请（阿里云/腾讯云等都有备案入口）。',
-     time:'20个工作日',proc:'购买服务器→提交备案→管局审核→取得备案号'},
-    {name:'等级保护',must:false,risk:'中',desc:'三级系统需做等保测评',penalty:'不通过可能影响招标/融资',
-     advice:'联系有资质的等保测评机构测评。三级系统需每年测评一次。',time:'2-3个月',proc:'定级备案→整改→测评→报告'},
-    {name:'数据出境评估',must:false,risk:'高',desc:'向境外提供数据需评估',penalty:'违规可罚5000万或上年营收5%',
-     advice:'通过省级网信办提交数据出境安全评估申请。需准备风险自评估报告。',time:'3-6个月',proc:'自评估→提交→省网信办→国家网信办→通过'}]
+    {name:'算法备案',must:true,risk:'高',
+     desc:'有AI推荐/排序/生成功能的必须备案',
+     penalty:'责令整改+罚款；拒不改正最高停服+罚款50万',
+     advice:'登录 beian.cac.gov.cn 在线提交备案',
+     time:'2-3个月',proc:'准备材料→在线提交→网信办审核→取得备案编号',
+     materials:['算法备案申请书（在线填写）','算法安全评估报告','算法机制机理说明文档','算法应用场景说明','用户权益保护措施说明','法人/经办人身份证明'],
+     department:'国家互联网信息办公室（CAC）— 算法备案系统（beian.cac.gov.cn）',
+     detailProc:['1. 登录 beian.cac.gov.cn 注册企业账号',
+      '2. 在线填写算法备案申请表（含算法名称、类型、应用场景）',
+      '3. 编写并上传算法安全评估报告（需评估算法对用户权益、社会秩序的影响）',
+      '4. 编写算法机制机理说明（算法的基本原理、训练数据、决策逻辑）',
+      '5. 提交后CAC在10个工作日内形式审查，材料不全退回补正',
+      '6. 审查通过后取得备案编号，公示于CAC官网'],
+     cost:'免费（仅工本费）',
+     tips:'备案建议在AI功能上线前启动，因为审核周期可能延长。算法安全评估报告建议找专业机构协助撰写，首次撰写容易遗漏关键评估项。'},
+    {name:'生成式AI备案',must:true,risk:'高',
+     desc:'提供生成式AI服务的必须备案',
+     penalty:'未备案不得上线，违者责令整改+罚款',
+     advice:'在CAC备案系统中选择「生成式AI」类别提交',
+     time:'2-3个月',proc:'模型安全评估→材料准备→提交CAC→审核通过',
+     materials:['生成式AI备案申请表','模型技术说明文档','训练数据来源说明','内容安全措施方案','用户协议与隐私政策','安全评估报告'],
+     department:'国家互联网信息办公室（CAC）— 生成式AI备案通道',
+     detailProc:['1. 完成模型安全评估（可委托第三方评估机构）',
+      '2. 准备模型技术说明文档（架构、训练数据、能力边界）',
+      '3. 制定内容安全措施方案（过滤机制、人工审核流程）',
+      '4. 登录CAC备案系统，选择「生成式AI」备案通道',
+      '5. 提交全部材料，等待形式审查（约10个工作日）',
+      '6. 审查通过后取得备案编号'],
+     cost:'安全评估费用视模型复杂度约5-20万',
+     tips:'安全评估是关键环节，建议在模型发布前1个月开始准备。训练数据来源必须合规，不能包含违法内容。'},
+    {name:'ICP备案',must:true,risk:'中',
+     desc:'所有网站必须ICP备案',
+     penalty:'未备案网站被责令关闭',
+     advice:'在云服务商控制台提交备案申请',
+     time:'20个工作日',proc:'购买服务器→提交→管局审核→备案号',
+     materials:['营业执照副本复印件（加盖公章）','法人身份证复印件','网站负责人身份证复印件','域名证书','网站ICP备案信息真实性核验单（服务商提供）','域名注册商信息'],
+     department:'各省通信管理局（通过云服务商提交）',
+     detailProc:['1. 购买国内合规服务器（阿里云/腾讯云/华为云等）',
+      '2. 准备域名并完成实名认证（域名注册后需3-7天完成实名）',
+      '3. 在云服务商备案系统填写备案信息',
+      '4. 法人人脸核验/网站负责人拍照核验',
+      '5. 服务商初审通过后提交至当地通信管理局',
+      '6. 管局审核20个工作日内完成，通过后下发备案号'],
+     cost:'免费的政府服务（服务器费用另计）',
+     tips:'备案期间网站不能正式上线，可放「建设中」页面。上海/北京管局较严格，审核周期可能延长到30天。'},
+    {name:'等级保护',must:false,risk:'中',
+     desc:'三级系统需做等保测评',
+     penalty:'不通过可能影响招标/融资',
+     advice:'联系有资质的等保测评机构',
+     time:'2-3个月',proc:'定级备案→整改→测评→报告',
+     materials:['系统定级报告','等级保护备案表','系统拓扑图','安全整改方案','安全管理制度汇编','测评申请书'],
+     department:'公安部备案 + 有资质的等保测评机构',
+     detailProc:['1. 确定系统安全保护等级（一般SaaS平台为三级）',
+      '2. 到当地公安机关网安部门定级备案',
+      '3. 委托有资质的等保测评机构进行差距评估',
+      '4. 根据差距报告进行安全整改（防火墙、日志审计、数据加密等）',
+      '5. 正式测评，测评机构出具等级保护测评报告',
+      '6. 取得测评报告后定期维护，三级系统需每年测评一次'],
+     cost:'测评费约5-15万（三级），整改费视情况1-50万',
+     tips:'如果是初创期、不涉及政务/金融等高敏数据，可以不急着做。但接受融资尽调或参与政府招标时，等保是标配要求。'},
+    {name:'数据出境评估',must:false,risk:'高',
+     desc:'向境外提供数据需评估',
+     penalty:'违规可罚5000万或上年营收5%',
+     advice:'通过省级网信办提交安全评估申请',
+     time:'3-6个月',proc:'自评估→提交→省网信办→国家网信办→通过',
+     materials:['数据出境安全评估申请表','数据出境风险自评估报告','数据出境合同/协议','数据出境场景说明','数据安全管理制度','个人信息保护影响评估报告'],
+     department:'省级网信办初审 → 国家网信办终审',
+     detailProc:['1. 梳理数据出境场景（哪些数据、从哪到哪、通过什么方式）',
+      '2. 开展数据出境风险自评估（必须由法定代表人或主要负责人签字）',
+      '3. 准备数据出境合同，明确境外接收方的数据保护义务',
+      '4. 向省级网信办提交安全评估申请',
+      '5. 省网信办5个工作日内形式审查后报国家网信办',
+      '6. 国家网信办45个工作日内完成评估，复杂情况可延长'],
+     cost:'免费的政府服务',
+     tips:'只有少部分公司（如面向境外客户的大数据平台）会触发。判断标准：年出境个人信息≥100万人、或核心数据出境、或重要数据出境才需要评估。'}]
   },
   {name:'医疗器械',icon:'🏥',
    items:[
-    {name:'医疗器械注册证',must:true,risk:'高',desc:'二类/三类医疗器械上市前必须注册',penalty:'无证生产/销售=违法，罚款+没收+吊销',
-     advice:'向国家药监局（NMPA）或省药监局提交注册。建议找有经验的注册代理机构协助。',time:'1-3年',proc:'分类→检测→临床评价→提交→审评→拿证'},
-    {name:'医疗器械经营许可证',must:true,risk:'高',desc:'三类医疗器械经营需办理',penalty:'无证经营可罚货值5-10倍',
-     advice:'向所在地市级市场监管局申请。需有质量负责人和经营场所。',time:'1-3个月',proc:'准备材料→提交→现场核查→发证'},
-    {name:'医疗器械网络销售备案',must:true,risk:'高',desc:'线上销售医疗器械需备案',penalty:'未备案不得网售',
-     advice:'登录国家药监局网络销售备案平台在线办理。',time:'10个工作日',proc:'在线填写→提交→审核→取得备案号'},
-    {name:'医疗器械生产许可证',must:true,risk:'高',desc:'二类/三类医疗器械生产需办理',penalty:'无证生产=违法',
-     advice:'向省药监局申请。需符合GMP要求。',time:'3-6个月',proc:'体系建立→提交→现场检查→发证'}]
+    {name:'医疗器械注册证',must:true,risk:'高',
+     desc:'二类/三类医疗器械上市前必须注册',
+     penalty:'无证生产/销售=违法，罚款+没收+吊销',
+     advice:'向NMPA或省药监局提交注册申请',
+     time:'1-3年',proc:'分类→检测→临床评价→提交→审评→拿证',
+     materials:['医疗器械注册申请表','产品技术要求和检验报告','产品说明书和标签样稿','临床评价/试验资料','质量管理体系文件','产品风险分析资料','注册申请人资质证明'],
+     department:'国家药品监督管理局（NMPA）医疗器械技术审评中心 / 省药监局（二类由省局审批）',
+     detailProc:['1. 产品分类确认（一类备案/二类省局/三类国家局）',
+      '2. 委托有资质的检测机构进行产品检测（EMC、生物相容性等）',
+      '3. 准备临床评价资料（可引用同类产品文献，或开展临床试验）',
+      '4. 建立并运行GMP质量管理体系',
+      '5. 通过NMPA eRPS系统提交注册申请',
+      '6. 技术审评（二类约60-110个工作日，三类约90-190个工作日）',
+      '7. 通过后取得医疗器械注册证'],
+     cost:'二类约10-50万，三类约50-200万（含检测、临床、注册代理费用）',
+     tips:'这是最难的环节，建议找专业注册代理机构。注册证有效期5年，到期前6个月申请延续。注册周期经常超出预期，做好1-2年的心理准备。'},
+    {name:'医疗器械经营许可证',must:true,risk:'高',
+     desc:'三类医疗器械经营需办理',
+     penalty:'无证经营可罚货值5-10倍',
+     advice:'向所在地市级市场监管局申请',
+     time:'1-3个月',proc:'准备材料→提交→现场核查→发证',
+     materials:['医疗器械经营许可证申请表','营业执照复印件','法定代表人/负责人身份证明','质量负责人身份证明及学历/职称证明','经营场所和库房产权证明或租赁合同','质量管理体系文件（经营类）','计算机信息管理系统说明'],
+     department:'市级市场监督管理局（医疗器械监管科）',
+     detailProc:['1. 确定经营范围（批零/零售/仅销售特定品种）',
+      '2. 配备质量负责人（需医疗器械相关专业大专以上或中级以上职称）',
+      '3. 准备符合要求的经营场所和库房（面积和条件有最低要求）',
+      '4. 建立经营质量管理体系（采购、验收、储存、销售全流程）',
+      '5. 到市级市场监管局窗口提交申请材料',
+      '6. 市场监管局进行现场核查（约5个工作日安排）',
+      '7. 核查通过后15个工作日内发证'],
+     cost:'免费（质量负责人聘用费用另计）',
+     tips:'质量负责人是硬门槛，很多公司卡在这里。如只是销售一类器械（如医用口罩），不需要经营许可证，只需备案。'},
+    {name:'医疗器械网络销售备案',must:true,risk:'高',
+     desc:'线上销售医疗器械需备案',
+     penalty:'未备案不得网售',
+     advice:'登录国家药监局网络销售备案平台在线办理',
+     time:'10个工作日',proc:'在线填写→提交→审核→取得备案号',
+     materials:['医疗器械网络销售备案信息表','营业执照和经营许可证/备案凭证','网站或第三方平台信息','网络销售管理制度','信息安全保障措施说明'],
+     department:'所在地市级市场监督管理局（通过国家药监局网络销售备案平台）',
+     detailProc:['1. 确保已取得线下经营资质（经营许可证或备案凭证）',
+      '2. 登录国家药监局网络销售备案平台（https://nmpa.gov.cn）',
+      '3. 在线填写备案信息表（含网站/店铺信息、销售品种、经营方式）',
+      '4. 上传相关资质材料扫描件',
+      '5. 提交后市级市场监管局审核，5-10个工作日完成',
+      '6. 审核通过后取得备案编号'],
+     cost:'免费',
+     tips:'在淘宝/京东/拼多多开医疗器械店之前必须先办这个。在抖音/快手直播卖医疗器械同样需要。'},
+    {name:'医疗器械生产许可证',must:true,risk:'高',
+     desc:'二类/三类医疗器械生产需办理',
+     penalty:'无证生产=违法',
+     advice:'向省药监局申请，需符合GMP要求',
+     time:'3-6个月',proc:'体系建立→提交→现场检查→发证',
+     materials:['医疗器械生产许可申请表','营业执照复印件','医疗器械注册证（或注册受理通知书）','生产场地证明文件','主要生产设备和检验设备清单','质量管理体系文件（生产类GMP文件）','生产工艺流程图'],
+     department:'省级药品监督管理局（医疗器械监管处）',
+     detailProc:['1. 建立符合GMP要求的生产场地和质量管理体系',
+      '2. 配备生产设备和检验设备（需检定/校准）',
+      '3. 确保关键岗位人员到位（生产负责人、质量负责人、技术负责人）',
+      '4. 完成试生产，形成体系运行记录',
+      '5. 向省药监局提交生产许可申请',
+      '6. 省药监局安排现场体系考核（2-3天）',
+      '7. 通过考核后取得生产许可证'],
+     cost:'免费的政府服务（GMP体系建设和咨询费用另计约10-50万）',
+     tips:'生产许可证必须在取得产品注册证后才能申请。现场检查是最容易卡住的地方，建议先做一次模拟检查。'}]
   },
   {name:'生物医药/创新药',icon:'💊',
    items:[
-    {name:'药品注册证书',must:true,risk:'高',desc:'新药上市前必须取得注册证',penalty:'无证生产/销售=假药论处',
-     advice:'向国家药监局药品审评中心（CDE）提交注册。建议聘请专业注册团队。',time:'2-5年',proc:'临床前→IND→临床试验→NDA→审评→拿证'},
-    {name:'GMP认证',must:true,risk:'高',desc:'药品生产质量管理规范认证',penalty:'未通过GMP不得生产',
-     advice:'向省药监局申请GMP符合性检查。需建立完整质量体系。',time:'6-12个月',proc:'厂房建设→体系建立→自检→申请→检查→通过'},
-    {name:'药品经营许可证',must:true,risk:'中',desc:'药品批发/零售需办理',penalty:'无证经营=违法',
-     advice:'向当地药监局申请。需有执业药师。',time:'1-3个月',proc:'准备材料→提交→现场验收→发证'}]
+    {name:'药品注册证书',must:true,risk:'高',
+     desc:'新药上市前必须取得注册证',
+     penalty:'无证生产/销售=假药论处',
+     advice:'向CDE提交注册，建议聘请专业注册团队',
+     time:'2-5年',proc:'临床前→IND→临床试验→NDA→审评→拿证',
+     materials:['药品注册申请表','药学研究资料（原料药和制剂）','药理毒理研究资料','临床试验资料','药品生产工艺和质控标准','药品说明书和标签样稿','药品注册检验报告'],
+     department:'国家药品监督管理局药品审评中心（CDE）',
+     detailProc:['1. 临床前研究（药学、药理、毒理、药代动力学）— 1-2年',
+      '2. 提交IND（临床试验申请），获得临床试验批件— 60工作日',
+      '3. 开展I期/II期/III期临床试验— 1-3年',
+      '4. 提交NDA（新药上市申请）— 审评周期约12个月',
+      '5. CDE技术审评、生产现场核查、注册检验',
+      '6. 通过后取得药品注册证书'],
+     cost:'临床前研究数百至数千万，临床试验数千万至数亿',
+     tips:'新药研发周期长、风险高，建议在IND前就与CDE沟通（Pre-IND会议）。创新药可申请优先审评和突破性治疗认定，大幅加快审批。'},
+    {name:'GMP认证',must:true,risk:'高',
+     desc:'药品生产质量管理规范认证',
+     penalty:'未通过GMP不得生产',
+     advice:'向省药监局申请GMP符合性检查',
+     time:'6-12个月',proc:'厂房建设→体系建立→自检→申请→检查→通过',
+     materials:['GMP认证申请书','企业基本情况资料','药品生产许可证和营业执照','质量管理体系文件','厂房设施设备布局图','主要生产和检验设备清单','认证品种的生产工艺和质控标准'],
+     department:'省级药品监督管理局（药品生产监管处）',
+     detailProc:['1. 按GMP标准建设厂房和生产线（洁净车间级别要达标）',
+      '2. 建立完整的质量管理体系（至少涵盖10大系统）',
+      '3. 所有设备完成安装确认（IQ）、运行确认（OQ）、性能确认（PQ）',
+      '4. 完成至少3批工艺验证和清洁验证',
+      '5. 开展内部自检，发现问题整改',
+      '6. 向省药监局提交GMP符合性检查申请',
+      '7. 检查组进行现场检查（3-5天），出具检查结论'],
+     cost:'厂房建设费用视规模几百万到几千万，GMP咨询费约50-200万',
+     tips:'GMP检查最常出问题的是：数据完整性（原始记录）、偏差处理、变更控制。建议在正式检查前请第三方做一次模拟检查。'},
+    {name:'药品经营许可证',must:true,risk:'中',
+     desc:'药品批发/零售需办理',
+     penalty:'无证经营=违法',
+     advice:'向当地药监局申请，需有执业药师',
+     time:'1-3个月',proc:'准备材料→提交→现场验收→发证',
+     materials:['药品经营许可证申请表','营业执照复印件','法定代表人/负责人身份证明','执业药师注册证（关键！）','经营场所和仓库证明','质量管理体系文件','计算机管理系统说明'],
+     department:'市级/区级市场监督管理局（药械监管科）',
+     detailProc:['1. 确定经营范围（中药/西药/生物制品等）',
+      '2. 配备执业药师（批发企业需2名以上，零售药店需1名）',
+      '3. 租赁符合要求的经营场所（零售药店面积一般不少于40㎡）',
+      '4. 建立质量管理体系和计算机管理系统',
+      '5. 向市场监管部门提交申请',
+      '6. 市场监管局进行现场验收（重点查执业药师在岗、温湿度控制）',
+      '7. 验收通过后发证'],
+     cost:'免费的政府服务（执业药师聘用费用约1-3万/月）',
+     tips:'执业药师是最大的门槛，全国执业药师紧缺。如果只是做药品研发不涉及销售，不需要此证。'}]
   },
   {name:'新能源/汽车',icon:'⚡',
    items:[
-    {name:'新能源汽车生产资质',must:true,risk:'高',desc:'新建纯电动乘用车生产企业需核准',penalty:'无资质不得生产',
-     advice:'向国家发改委和工信部提交准入申请。难度极高。',time:'1-2年',proc:'项目备案→工厂建设→检测→提交准入→公告'},
-    {name:'车辆CCC认证',must:true,risk:'高',desc:'上市销售前必须通过CCC认证',penalty:'无CCC认证不得销售',
-     advice:'向中国质量认证中心（CQC）申请。需送样检测+工厂检查。',time:'3-6个月',proc:'送样检测→工厂检查→评证→发证'}]
+    {name:'新能源汽车生产资质',must:true,risk:'高',
+     desc:'新建纯电动乘用车生产企业需核准',
+     penalty:'无资质不得生产',
+     advice:'向国家发改委和工信部提交准入申请，难度极高',
+     time:'1-2年',proc:'项目备案→工厂建设→检测→提交准入→公告',
+     materials:['企业投资项目备案文件','工厂建设和设备清单','产品技术方案和工艺说明','产品检测报告（国标全项）','质量管理体系文件','售后服务网络建设方案','企业环保和安全生产评估报告'],
+     department:'国家发展和改革委员会（产业司）+ 工业和信息化部（装备工业一司）',
+     detailProc:['1. 向省级发改委提交项目备案申请',
+      '2. 工厂建设并通过联合竣工验收',
+      '3. 委托中机车辆检测中心等机构进行产品全项检测',
+      '4. 建立ISO 9001/TS 16949质量管理体系',
+      '5. 向工信部提交准入申请材料',
+      '6. 工信部组织专家现场审查',
+      '7. 审查通过后列入《道路机动车辆生产企业及产品公告》'],
+     cost:'投资规模至少数十亿，资质办理本身免费但门槛极高',
+     tips:'新能源生产资质极难获得（自2017年以来仅发了不到20家），没有雄厚资金和核心技术不建议作为初创企业进入。更多公司选择代工模式。'},
+    {name:'车辆CCC认证',must:true,risk:'高',
+     desc:'上市销售前必须通过CCC认证',
+     penalty:'无CCC认证不得销售',
+     advice:'向中国质量认证中心（CQC）申请',
+     time:'3-6个月',proc:'送样检测→工厂检查→评证→发证',
+     materials:['CCC认证申请书','产品描述和差异说明','产品检测报告（按强制性标准全项）','工厂质量保证能力文件','关键零部件供应商清单','产品使用说明书和铭牌样稿'],
+     department:'中国质量认证中心（CQC）',
+     detailProc:['1. 确认产品涉及的标准和检测项目（至少50+项国标）',
+      '2. 送样至指定实验室进行各项检测',
+      '3. 检测通过后安排初始工厂检查',
+      '4. 工厂检查员到生产现场核查质量保证能力',
+      '5. CQC综合评定，确认发证与否',
+      '6. 获证后每年接受监督检查'],
+     cost:'检测费+评审费约20-50万，后续年检费约3-5万/年',
+     tips:'CCC认证是车辆上路销售的准入门槛，必须在车辆公告之后、上市之前完成。申请前建议做一次预检测。'}]
   },
   {name:'半导体/芯片',icon:'🔬',
    items:[
-    {name:'进出口经营备案',must:true,risk:'高',desc:'涉及设备/材料进出口需备案',penalty:'未备案不得进出口',
-     advice:'向商务局办理对外贸易经营者备案。',time:'1-2周',proc:'商务局备案→海关登记→外汇登记→税务备案'},
-    {name:'两用物项出口许可',must:true,risk:'高',desc:'涉及管制物项出口需许可证',penalty:'违规出口=走私，可刑事追责',
-     advice:'向商务部产业安全与进出口管制局申请。先自查产品是否在管制清单内。',time:'2-6个月',proc:'自查→提交→商务部审查→发证'}]
+    {name:'进出口经营备案',must:true,risk:'高',
+     desc:'涉及设备/材料进出口需备案',
+     penalty:'未备案不得进出口',
+     advice:'向商务局办理对外贸易经营者备案',
+     time:'1-2周',proc:'商务局备案→海关登记→外汇登记→税务备案',
+     materials:['对外贸易经营者备案登记表','营业执照副本复印件','法人身份证复印件','企业基本情况说明','银行开户许可证'],
+     department:'商务局（对外贸易科）+ 海关 + 外汇管理局',
+     detailProc:['1. 到当地商务局办理「对外贸易经营者备案登记」',
+      '2. 到海关办理进出口货物收发货人备案',
+      '3. 到外汇管理局办理外汇收支企业名录登记',
+      '4. 到税务局办理出口退（免）税备案',
+      '5. 到报关协会办理电子口岸IC卡',
+      '6. 全部办妥后可正常开展进出口业务'],
+     cost:'免费的政府服务（电子口岸IC卡工本费约200元）',
+     tips:'备案本身简单，但半导体设备进出口还需要关注两用物项管制清单。如果设备涉及管制类，需要额外申请出口许可证。'},
+    {name:'两用物项出口许可',must:true,risk:'高',
+     desc:'涉及管制物项出口需许可证',
+     penalty:'违规出口=走私，可刑事追责',
+     advice:'向商务部产业安全与进出口管制局申请',
+     time:'2-6个月',proc:'自查→提交→商务部审查→发证',
+     materials:['两用物项和技术出口许可证申请表','企业营业执照和进出口备案证明','产品技术说明和参数','最终用户和最终用途证明','出口合同及相关协议','物项是否在管制清单内的自查报告'],
+     department:'商务部产业安全与进出口管制局',
+     detailProc:['1. 自行判断产品是否在「两用物项出口管制清单」内',
+      '2. 如涉及管制物项，准备完整的技术说明和用途说明',
+      '3. 要求最终用户提供最终用途证明（需官方认证）',
+      '4. 通过商务部业务系统提交出口许可申请',
+      '5. 商务部审查（一般45个工作日，复杂情况可延长）',
+      '6. 获证后报关出口，许可证单次有效'],
+     cost:'免费的政府服务',
+     tips:'纳米级光刻机、EDA软件、特定半导体材料等属于管制物项。判断不准确的风险极大，建议找专业合规律师做物项判定。误出口管制物项可能触发刑事责任。'}]
   },
   {name:'餐饮/零售',icon:'🍜',
    items:[
-    {name:'食品经营许可证',must:true,risk:'高',desc:'从事食品销售/餐饮服务必须办理',penalty:'无证经营可罚5万以上',
-     advice:'向当地市场监管局申请。需有符合要求的经营场所和健康证。',time:'10-20个工作日',proc:'培训→提交→现场核查→发证'},
-    {name:'卫生许可证',must:true,risk:'高',desc:'餐饮服务需办理公共卫生许可',penalty:'无证经营可罚',
-     advice:'向当地卫健委申请。需提供卫生检测报告。',time:'10个工作日',proc:'检测→提交→审查→发证'},
-    {name:'消防验收',must:true,risk:'高',desc:'实体店面需通过消防验收',penalty:'不通过不得开业',
-     advice:'向当地消防救援机构申报。装修前就咨询消防要求。',time:'1-2个月',proc:'设计审核→施工→验收申报→检查→合格'},
-    {name:'健康证',must:true,risk:'中',desc:'从业人员需办理健康证明',penalty:'无健康证可罚',
-     advice:'到当地疾控中心或指定医院体检办理。',time:'1-3个工作日',proc:'体检→合格→发证'}]
+    {name:'食品经营许可证',must:true,risk:'高',
+     desc:'从事食品销售/餐饮服务必须办理',
+     penalty:'无证经营可罚5万以上',
+     advice:'向当地市场监管局申请',
+     time:'10-20个工作日',proc:'培训→提交→现场核查→发证',
+     materials:['食品经营许可申请书（在线填写）','营业执照副本复印件','法定代表人/负责人身份证明','经营场所平面布局图','食品从业人员健康证复印件','食品安全管理制度（进货查验、索证索票等）','经营场所合法使用证明（房产证或租赁合同）'],
+     department:'市级/区级市场监督管理局（食品经营监管科/行政审批科）',
+     detailProc:['1. 经营场所装修前先咨询市场监管局，了解基本布局要求',
+      '2. 所有从业人员办理健康证（到当地疾控中心或指定医院体检）',
+      '3. 制定食品安全管理制度（使用市场监管局提供的模板）',
+      '4. 登录当地市场监管局官网或政务服务网提交申请',
+      '5. 市场监管局5个工作日内安排现场核查',
+      '6. 核查人员检查：环境卫生、设施设备、制度上墙、人员健康证',
+      '7. 核查通过后10个工作日内发证'],
+     cost:'免费的政府服务（健康证体检费约100-200元/人）',
+     tips:'提前装修好再申请，不要先开业再补办。现场核查最常卡在：布局不合理（生熟不分）、三防设施不到位（防鼠防蝇防虫）、健康证不齐全。如果做外卖，还需要在外卖平台上传许可证。'},
+    {name:'卫生许可证',must:true,risk:'高',
+     desc:'餐饮服务需办理公共卫生许可',
+     penalty:'无证经营可罚',
+     advice:'向当地卫健委申请，需提供卫生检测报告',
+     time:'10个工作日',proc:'检测→提交→审查→发证',
+     materials:['卫生许可证申请书','营业执照复印件','法定代表人/负责人身份证明','经营场所平面布局图','卫生管理制度和操作规程','卫生检测报告（空气、水质、餐具等）','从业人员健康证'],
+     department:'当地卫生健康委员会（行政审批科/卫生监督所）',
+     detailProc:['1. 委托有资质的检测机构对经营场所进行卫生检测',
+      '2. 制定卫生管理制度（清洁消毒、垃圾处理、虫害控制等）',
+      '3. 准备从业人员健康证（与食品经营许可证共享）',
+      '4. 通过政务服务网或窗口提交申请',
+      '5. 卫健委进行现场审查',
+      '6. 审查通过后发放卫生许可证'],
+     cost:'检测费约500-2000元（视检测项目数量）',
+     tips:'很多城市已经将食品经营许可证和卫生许可证合并办理，具体咨询当地市场监管局。如果是纯外卖档口/厨房（无堂食），部分地区不需要卫生许可证。'},
+    {name:'消防验收',must:true,risk:'高',
+     desc:'实体店面需通过消防验收',
+     penalty:'不通过不得开业',
+     advice:'向当地消防救援机构申报',
+     time:'1-2个月',proc:'设计审核→施工→验收申报→检查→合格',
+     materials:['消防验收申报表','装修施工图（含消防设计）','消防设施检测报告','消防产品合格证明文件','施工记录和隐蔽工程验收记录','消防安全管理制度'],
+     department:'当地消防救援支队/大队（消防验收科）',
+     detailProc:['1. 装修前咨询消防要求：喷淋、烟感、疏散通道、灭火器',
+      '2. 找有消防设计资质的单位出具施工图',
+      '3. 施工期间按图施工，做好隐蔽工程记录',
+      '4. 装修完成后委托消防设施检测机构检测',
+      '5. 通过政务服务网或窗口提交消防验收申请',
+      '6. 消防救援机构进行现场检查',
+      '7. 检查通过后出具消防验收合格意见'],
+     cost:'检测费约2000-10000元，消防改造费视情况1-10万',
+     tips:'装修前一定先问清楚消防要求，改消防是最贵的返工。100㎡以下的小店，很多地区可以用「消防备案承诺」代替正式验收。找装修公司时要问清楚是否有消防资质。'},
+    {name:'健康证',must:true,risk:'中',
+     desc:'从业人员需办理健康证明',
+     penalty:'无健康证可罚',
+     advice:'到当地疾控中心或指定医院体检办理',
+     time:'1-3个工作日',proc:'体检→合格→发证',
+     materials:['身份证原件','1寸照片2张','食品/药品从业人员体检表（到体检机构领取）','营业执照复印件（部分机构需要）'],
+     department:'当地疾病预防控制中心（CDC）或定点医院体检中心',
+     detailProc:['1. 携带身份证到当地疾控中心或定点医院',
+      '2. 填写从业人员体检表，缴费',
+      '3. 体检项目：内科、皮肤科、肝功能、大便培养（痢疾/伤寒）、胸透',
+      '4. 体检合格后（通常1-3个工作日），领取健康证',
+      '5. 健康证有效期1年，到期前需重新办理'],
+     cost:'体检费约100-200元/人',
+     tips:'健康证是所有食品从业人员必备，包括老板本人！办证前可以电话咨询当地疾控中心是否还有定点医院（很多医院也能办）。健康证电子版现在也可以使用。'}]
   },
   {name:'电商/跨境电商',icon:'🛒',
    items:[
-    {name:'EDI许可证',must:true,risk:'中',desc:'在线交易处理需办理',penalty:'无证经营可罚',
-     advice:'向省通信管理局申请。要求注册资金100万以上（认缴）。',time:'2-3个月',proc:'材料准备→网上提交→省通管局审核→发证'},
-    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被关闭',
-     advice:'购买服务器后在服务商控制台提交备案。',time:'20个工作日',proc:'购买服务器→提交→管局审核→备案号'}]
+    {name:'EDI许可证',must:true,risk:'中',
+     desc:'在线交易处理需办理',
+     penalty:'无证经营可罚',
+     advice:'向省通信管理局申请，注册资金100万以上（认缴）',
+     time:'2-3个月',proc:'材料准备→网上提交→省通管局审核→发证',
+     materials:['EDI许可证（在线数据处理与交易处理业务）申请表','营业执照副本复印件','法定代表人/负责人身份证复印件','公司注册资金证明（≥100万，认缴即可）','网站/APP平台功能说明','网络与信息安全保障措施方案','社保缴纳证明（至少3人以上）','接入服务商IDC协议'],
+     department:'省级通信管理局（信息通信管理处）',
+     detailProc:['1. 确保公司注册资金认缴不低于100万元',
+      '2. 为至少3名员工缴纳社保（需提供连续1个月以上社保记录）',
+      '3. 准备平台功能说明和网络安全保障方案',
+      '4. 与服务器托管商签订IDC协议',
+      '5. 登录工信部政务服务平台（https://ythzxfw.miit.gov.cn）提交材料',
+      '6. 省通管局在45-60个工作日内完成审核',
+      '7. 审核通过后领取EDI许可证（有效期5年）'],
+     cost:'免费的政府服务（社保和服务器费用另计）',
+     tips:'EDI证是电商平台的「准生证」，做B2C/B2B电商平台必须办。如果是自己做一个独立站卖产品（不涉及第三方入驻），通常不需要EDI证，仅需ICP备案。社保3人是硬门槛，有些地区还要求省内社保。'},
+    {name:'ICP备案',must:true,risk:'中',
+     desc:'所有网站必须ICP备案',
+     penalty:'未备案网站被关闭',
+     advice:'购买服务器后在服务商控制台提交备案',
+     time:'20个工作日',proc:'购买服务器→提交→管局审核→备案号',
+     materials:['营业执照副本复印件','法人身份证复印件','网站负责人身份证复印件','域名证书','网站备案信息真实性核验单','域名实名认证截图'],
+     department:'各省通信管理局（通过云服务商提交）',
+     detailProc:['1. 购买国内合规服务器（阿里云/腾讯云/华为云等）',
+      '2. 域名完成实名认证（需3-7天）',
+      '3. 在云服务商备案系统填写信息并上传材料',
+      '4. 法人或网站负责人人脸核验',
+      '5. 服务商初审（1-3个工作日）后推送至管局',
+      '6. 管局审核20个工作日内完成，通过后下发备案号'],
+     cost:'免费',
+     tips:'如果面向境外客户，可以考虑使用境外服务器免备案，但国内访问速度会变慢。跨境B2B网站（主要面向海外客户的）可以用海外服务器。'}]
   },
   {name:'软件/IT服务',icon:'💻',
    items:[
-    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被关闭',
-     advice:'购买服务器后在服务商控制台提交备案。',time:'20个工作日',proc:'购买服务器→提交→管局审核→备案号'},
-    {name:'高企认定',must:false,risk:'中',desc:'享受15%企业所得税优惠',penalty:'无非强制性',
-     advice:'向当地科技部门提交申请。软件企业通常较容易通过。',time:'3-6个月',proc:'自评→材料→提交→评审→公示→拿证'}]
+    {name:'ICP备案',must:true,risk:'中',
+     desc:'所有网站必须ICP备案',
+     penalty:'未备案网站被关闭',
+     advice:'购买服务器后在服务商控制台提交备案',
+     time:'20个工作日',proc:'购买服务器→提交→管局审核→备案号',
+     materials:['营业执照副本复印件','法人身份证复印件','网站负责人身份证复印件','域名证书','网站备案信息真实性核验单','域名实名认证截图'],
+     department:'各省通信管理局（通过云服务商提交）',
+     detailProc:['1. 购买国内合规服务器（阿里云/腾讯云/华为云等）',
+      '2. 域名完成实名认证（需3-7天）',
+      '3. 在云服务商备案系统填写信息并上传材料',
+      '4. 法人或网站负责人人脸核验',
+      '5. 服务商初审（1-3个工作日）后推送至管局',
+      '6. 管局审核20个工作日内完成，通过后下发备案号'],
+     cost:'免费',
+     tips:'SaaS服务商的客户访问你的网站需要备案。如果面向海外客户，可用海外服务器免备案。软件开发公司如果只做项目开发不运营自己的平台，可能不需要ICP备案。'},
+    {name:'高企认定',must:false,risk:'中',
+     desc:'享受15%企业所得税优惠',
+     penalty:'无非强制性',
+     advice:'向当地科技部门提交申请，软件企业通常较容易通过',
+     time:'3-6个月',proc:'自评→材料→提交→评审→公示→拿证',
+     materials:['高新技术企业认定申请书','企业注册登记证件（营业执照+税务登记证）','知识产权证明材料（软著/专利证书）','近3年研发费用专项审计报告','近3年财务审计报告','近1年高新技术产品收入专项审计','科技人员名单及学历证明','研发活动说明材料'],
+     department:'当地科技局（高新技术发展及产业化科）→ 认定机构办公室',
+     detailProc:['1. 自评是否满足八大条件（成立时间、知识产权、研发投入、高新收入、科技人员等）',
+      '2. 整理知识产权证书（软件企业建议准备6个以上软著）',
+      '3. 委托有资质的会计师事务所出具研发费用和高新收入专项审计',
+      '4. 在「高新技术企业认定管理工作网」注册并提交材料',
+      '5. 认定机构组织专家评审（60个工作日）',
+      '6. 评审通过后进行公示（10个工作日），无异议后发证',
+      '7. 证书有效期3年，到期前需重新认定'],
+     cost:'专项审计费约1-3万，认定成功后企业所得税从25%降至15%',
+     tips:'软件企业做高新认定有天然优势。关键是研发费用归集要规范（研发费用占比>5%取决于收入规模）。知识产权必须是近3年内取得的。软著申请快（1-3个月），临时补也来得及。'}]
   }
 ];
+
+// ===================== 页面逻辑 =====================
+const checked = {};
 
 function init(){
   const sel = document.getElementById('indSelect');
   sel.onchange = function(){
-    document.getElementById('btnStart').disabled = sel.selectedOptions.length===0;
+    document.getElementById('btnStart').disabled = this.value === '';
   };
 }
 
 function goCheck(){
   const sel = document.getElementById('indSelect');
-  const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value));
-  if(idxs.length===0) return;
-  
+  const idx = parseInt(sel.value);
+  if(isNaN(idx)) return;
+
   document.getElementById('pageHome').classList.add('hide');
   document.getElementById('pageCheck').classList.remove('hide');
-  
-  const names = idxs.map(i=>industries[i].name).join('、');
-  document.getElementById('checkSub').textContent = '行业：'+names;
-  
+
+  const ind = industries[idx];
+  document.getElementById('checkSub').textContent = '行业：' + ind.icon + ' ' + ind.name;
+
   const cl = document.getElementById('checkList');
-  cl.innerHTML = '';
-  idxs.forEach(idx=>{
-    const ind = industries[idx];
-    let h = `<div class="section-title">${ind.icon} ${ind.name}</div>`;
-    ind.items.forEach((item,i)=>{
-      const id = `ck_${idx}_${i}`;
-      const cls = item.must?'badge-red':'badge-ora';
-      h += `<div class="check-item">
-        <div class="info">
-          <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
-          <div class="desc">${item.desc}</div>
-        </div>
-        <div class="toggle" id="${id}" onclick="tog('${id}')"></div>
-      </div>`;
-    });
-    cl.innerHTML += h;
+  let h = `<div class="section-title">${ind.icon} ${ind.name}（共${ind.items.length}项）</div>`;
+  ind.items.forEach((item,i)=>{
+    const id = `ck_${i}`;
+    const cls = item.must?'badge-red':'badge-ora';
+    const defOn = checked[id]?' on':'';
+    h += `<div class="check-item">
+      <div class="info">
+        <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
+        <div class="desc">${item.desc}</div>
+      </div>
+      <div class="toggle${defOn}" id="${id}" onclick="tog('${id}')"></div>
+    </div>`;
   });
+  cl.innerHTML = h;
 }
 
-const checked = {};
 function tog(id){
   document.getElementById(id).classList.toggle('on');
   checked[id] = !checked[id];
@@ -217,59 +553,86 @@ function tog(id){
 
 function goResult(){
   const sel = document.getElementById('indSelect');
-  const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value));
-  
+  const idx = parseInt(sel.value);
+  const ind = industries[idx];
+
   document.getElementById('pageCheck').classList.add('hide');
   document.getElementById('pageResult').classList.remove('hide');
-  
+
   let missing = [], allMust = 0, haveMust = 0;
-  idxs.forEach(idx=>{
-    industries[idx].items.forEach((item,i)=>{
-      const id = `ck_${idx}_${i}`;
-      if(item.must) allMust++;
-      if(checked[id] && item.must) haveMust++;
-      if(item.must && !checked[id]) missing.push({ind:industries[idx], item});
-    });
+  ind.items.forEach((item,i)=>{
+    const id = `ck_${i}`;
+    if(item.must) allMust++;
+    if(checked[id] && item.must) haveMust++;
+    if(item.must && !checked[id]) missing.push(item);
   });
-  
+
   const head = document.getElementById('resultHead');
   if(missing.length===0){
     head.innerHTML = `<div class="verdict">
       <div class="verdict-icon">✅</div>
       <div class="verdict-text" style="color:#2ec4b6">完全合规</div>
-      <div class="verdict-sub">所选${idxs.length}个行业，${allMust}项必备资质全部具备</div>
+      <div class="verdict-sub">${ind.icon} ${ind.name} · ${allMust}项必备资质全部具备</div>
     </div>
     <div class="guide-item"><p>建议定期关注政策变化，证照到期前及时续期。</p></div>`;
     document.getElementById('resultBody').innerHTML = '';
   }else{
     const pct = Math.round((allMust-missing.length)/allMust*100);
-    let indTag = '';
-    let uniqueInds = [...new Set(missing.map(m=>m.ind.name))];
-    uniqueInds.forEach(n=>{indTag+=`<span class="ind-tag">${n}</span>`});
-    
     head.innerHTML = `<div class="verdict">
       <div class="verdict-icon">❌</div>
       <div class="verdict-text" style="color:#e71d36">不合规</div>
       <div class="verdict-sub">缺少 ${missing.length}/${allMust} 项必备资质 · 合规率 ${pct}%</div>
+      <div class="ind-tag">${ind.icon} ${ind.name}</div>
     </div>`;
-    
+
     let body = '<div class="section-title">⚠️ 需要补办的资质</div>';
-    missing.forEach((m,i)=>{
-      const item = m.item;
+    missing.forEach((item,i)=>{
       const rc = item.risk==='高'?'#e71d36':item.risk==='中'?'#ff9f1c':'#2ec4b6';
       body += `<div class="guide-item">
-        <h4>${i+1}. ${m.ind.icon} ${item.name} <span style="color:${rc};font-size:12px">${item.risk}风险</span></h4>
-        <p>${item.advice}</p>
+        <h4>${i+1}. ${item.name} <span style="color:${rc};font-size:12px">${item.risk}风险</span></h4>
+        <div class="summary">${item.advice}</div>
         <div class="meta">
-          <span>⏱ 办理时间：${item.time}</span>
-          <span>📋 流程：${item.proc}</span>
+          <span>⏱ ${item.time}</span>
+          <span>📋 ${item.proc}</span>
         </div>
         <div class="risk-box">⚠️ 不办的后果：${item.penalty}</div>
+        <button class="btn-guide" onclick="toggleDetail('detail_${i}')">💡 这件事怎么办？<span class="arrow" id="icon_${i}">▼</span></button>
+        <div class="detail-box" id="detail_${i}">
+          <div class="dl">
+            <div class="dl-item">
+              <div class="dl-label">📋 需要材料</div>
+              <div class="dl-val"><ul>${item.materials.map(m=>`<li>${m}</li>`).join('')}</ul></div>
+            </div>
+            <div class="dl-item">
+              <div class="dl-label">🏢 办理部门</div>
+              <div class="dl-val">${item.department}</div>
+            </div>
+            <div class="dl-item">
+              <div class="dl-label">📝 详细流程</div>
+              <div class="dl-val"><ul>${item.detailProc.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+            </div>
+            <div class="dl-item">
+              <div class="dl-label">💰 费用参考</div>
+              <div class="dl-val">${item.cost}</div>
+            </div>
+            <div class="dl-item">
+              <div class="tip-box">💡 ${item.tips}</div>
+            </div>
+          </div>
+        </div>
       </div>`;
     });
     document.getElementById('resultBody').innerHTML = body;
   }
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleDetail(id){
+  const el = document.getElementById(id);
+  el.classList.toggle('show');
+  const iconId = 'icon_' + id.split('_')[1];
+  const icon = document.getElementById(iconId);
+  if(icon) icon.classList.toggle('open');
 }
 
 function backHome(){
@@ -280,7 +643,7 @@ function backHome(){
 function resetAll(){
   Object.keys(checked).forEach(k=>delete checked[k]);
   document.querySelectorAll('.toggle.on').forEach(el=>el.classList.remove('on'));
-  document.getElementById('indSelect').selectedIndex = -1;
+  document.getElementById('indSelect').value = '';
   document.getElementById('btnStart').disabled = true;
   document.getElementById('pageResult').classList.add('hide');
   document.getElementById('pageHome').classList.remove('hide');
