@@ -14,6 +14,9 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
 .form-group select{width:100%;padding:11px 12px;border:2px solid #e0e0e0;border-radius:10px;font-size:14px;background:#fff;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.form-group select[multiple]{-webkit-appearance:none;appearance:none;background-image:none;height:auto;padding:6px}
+.form-group select[multiple] option{padding:8px 10px;border-radius:6px;margin:2px;cursor:pointer}
+.form-group select[multiple] option:checked{background:#4361ee;color:#fff;font-weight:600}
 .form-group select:focus{outline:none;border-color:#4361ee}
 .btn{display:block;width:100%;padding:13px;background:#4361ee;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;text-align:center;transition:background .2s}
 .btn:hover{background:#3651d4}
@@ -75,8 +78,8 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 <h1>🔍 企业合规自查</h1>
 <p class="sub">选行业 → 勾证照 → 出具报告+办理指南</p>
 <div class="form-group">
-<label>选择行业</label>
-<select id="indSelect">
+<label>选择行业（按住 Ctrl 可多选）</label>
+<select id="indSelect" multiple>
 <option value="">— 请选择行业 —</option>
 <option value="0">🤖 AI/大模型</option>
 <option value="1">🏥 医疗器械</option>
@@ -88,7 +91,7 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 <option value="7">💻 软件/IT服务</option>
 </select>
 </div>
-<button class="btn" id="btnStart" disabled onclick="goCheck()">开始自查 →</button>
+<button class="btn" id="btnStart" onclick="goCheck()">开始自查 →</button>
 </div>
 
 <!-- ===== 自查页 ===== -->
@@ -511,37 +514,35 @@ const industries = [
 // ===================== 页面逻辑 =====================
 const checked = {};
 
-function init(){
-  const sel = document.getElementById('indSelect');
-  sel.onchange = function(){
-    document.getElementById('btnStart').disabled = this.value === '';
-  };
-}
+function init(){}
 
 function goCheck(){
   const sel = document.getElementById('indSelect');
-  const idx = parseInt(sel.value);
-  if(isNaN(idx)) return;
+  const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value));
+  if(idxs.length===0){alert('请至少选择一个行业');return;}
 
   document.getElementById('pageHome').classList.add('hide');
   document.getElementById('pageCheck').classList.remove('hide');
 
-  const ind = industries[idx];
-  document.getElementById('checkSub').textContent = '行业：' + ind.icon + ' ' + ind.name;
+  const inds = idxs.map(i=>industries[i]);
+  document.getElementById('checkSub').textContent = '行业：' + inds.map(i=>i.icon+i.name).join('、');
 
   const cl = document.getElementById('checkList');
-  let h = `<div class="section-title">${ind.icon} ${ind.name}（共${ind.items.length}项）</div>`;
-  ind.items.forEach((item,i)=>{
-    const id = `ck_${i}`;
-    const cls = item.must?'badge-red':'badge-ora';
-    const defOn = checked[id]?' on':'';
-    h += `<div class="check-item">
-      <div class="info">
-        <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
-        <div class="desc">${item.desc}</div>
-      </div>
-      <div class="toggle${defOn}" id="${id}" onclick="tog('${id}')"></div>
-    </div>`;
+  let h = '';
+  inds.forEach((ind,ii)=>{
+    h += `<div class="section-title">${ind.icon} ${ind.name}（共${ind.items.length}项）</div>`;
+    ind.items.forEach((item,i)=>{
+      const id = `ck_${ii}_${i}`;
+      const cls = item.must?'badge-red':'badge-ora';
+      const defOn = checked[id]?' on':'';
+      h += `<div class="check-item">
+        <div class="info">
+          <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
+          <div class="desc">${item.desc}</div>
+        </div>
+        <div class="toggle${defOn}" id="${id}" onclick="tog('${id}')"></div>
+      </div>`;
+    });
   });
   cl.innerHTML = h;
 }
@@ -553,18 +554,20 @@ function tog(id){
 
 function goResult(){
   const sel = document.getElementById('indSelect');
-  const idx = parseInt(sel.value);
-  const ind = industries[idx];
+  const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value));
+  const inds = idxs.map(i=>industries[i]);
 
   document.getElementById('pageCheck').classList.add('hide');
   document.getElementById('pageResult').classList.remove('hide');
 
   let missing = [], allMust = 0, haveMust = 0;
-  ind.items.forEach((item,i)=>{
-    const id = `ck_${i}`;
-    if(item.must) allMust++;
-    if(checked[id] && item.must) haveMust++;
-    if(item.must && !checked[id]) missing.push(item);
+  inds.forEach((ind,ii)=>{
+    ind.items.forEach((item,i)=>{
+      const id = `ck_${ii}_${i}`;
+      if(item.must) allMust++;
+      if(checked[id] && item.must) haveMust++;
+      if(item.must && !checked[id]) missing.push(item);
+    });
   });
 
   const head = document.getElementById('resultHead');
@@ -572,7 +575,7 @@ function goResult(){
     head.innerHTML = `<div class="verdict">
       <div class="verdict-icon">✅</div>
       <div class="verdict-text" style="color:#2ec4b6">完全合规</div>
-      <div class="verdict-sub">${ind.icon} ${ind.name} · ${allMust}项必备资质全部具备</div>
+      <div class="verdict-sub">${inds.map(i=>i.icon+i.name).join('、')} · ${allMust}项必备资质全部具备</div>
     </div>
     <div class="guide-item"><p>建议定期关注政策变化，证照到期前及时续期。</p></div>`;
     document.getElementById('resultBody').innerHTML = '';
@@ -582,7 +585,6 @@ function goResult(){
       <div class="verdict-icon">❌</div>
       <div class="verdict-text" style="color:#e71d36">不合规</div>
       <div class="verdict-sub">缺少 ${missing.length}/${allMust} 项必备资质 · 合规率 ${pct}%</div>
-      <div class="ind-tag">${ind.icon} ${ind.name}</div>
     </div>`;
 
     let body = '<div class="section-title">⚠️ 需要补办的资质</div>';
@@ -643,8 +645,8 @@ function backHome(){
 function resetAll(){
   Object.keys(checked).forEach(k=>delete checked[k]);
   document.querySelectorAll('.toggle.on').forEach(el=>el.classList.remove('on'));
-  document.getElementById('indSelect').value = '';
-  document.getElementById('btnStart').disabled = true;
+  Array.from(document.getElementById('indSelect').options).forEach(o=>o.selected=false);
+
   document.getElementById('pageResult').classList.add('hide');
   document.getElementById('pageHome').classList.remove('hide');
 }
