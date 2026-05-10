@@ -7,28 +7,26 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;background:#f0f2f5;color:#1a1a2e;padding:20px}
-.container{max-width:780px;margin:0 auto}
+.container{max-width:720px;margin:0 auto}
 .card{background:#fff;border-radius:16px;padding:28px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
 h1{font-size:22px;text-align:center}
 .sub{text-align:center;color:#888;font-size:13px;margin-bottom:20px;line-height:1.6}
-.industry-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
-.industry-card{border:2px solid #e0e0e0;border-radius:12px;padding:14px;text-align:center;cursor:pointer;transition:all .2s;user-select:none}
-.industry-card:hover{border-color:#4361ee;background:#f8f9ff}
-.industry-card.selected{border-color:#4361ee;background:#eef2ff}
-.industry-card .icon{font-size:28px;margin-bottom:4px}
-.industry-card .name{font-weight:600;font-size:13px}
-.industry-card .count{font-size:11px;color:#888;margin-top:2px}
-.step-tag{display:inline-block;background:#eef2ff;color:#4361ee;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600}
+.tag-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;justify-content:center}
+.tag{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;border:2px solid #e0e0e0;border-radius:10px;cursor:pointer;transition:all .2s;font-size:14px;user-select:none}
+.tag:hover{border-color:#4361ee;background:#f8f9ff}
+.tag.selected{border-color:#4361ee;background:#eef2ff}
+.tag .count-badge{font-size:11px;color:#888;margin-left:2px}
 .section-title{font-size:16px;font-weight:700;margin:16px 0 10px;padding-bottom:8px;border-bottom:2px solid #f0f0f0;display:flex;align-items:center;gap:8px}
 .check-item{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f5f5f5;gap:12px}
 .check-item:last-child{border:none}
 .check-item .info{flex:1}
-.check-item .name{font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px}
-.check-item .desc{font-size:12px;color:#888;margin-top:2px;line-height:1.5}
-.check-item .risk-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;color:#fff;font-weight:600}
-.risk-high{background:#e71d36}
-.risk-mid{background:#ff9f1c}
-.risk-low{background:#2ec4b6}
+.check-item .name{font-weight:600;font-size:14px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.check-item .desc{font-size:12px;color:#888;margin-top:2px}
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;color:#fff;font-weight:600}
+.badge-red{background:#e71d36}
+.badge-ora{background:#ff9f1c}
+.badge-grn{background:#2ec4b6}
+.badge-gray{background:#aaa}
 .toggle{flex-shrink:0;width:52px;height:28px;border-radius:14px;background:#ddd;cursor:pointer;position:relative;transition:background .2s;margin-top:4px}
 .toggle.on{background:#2ec4b6}
 .toggle::after{content:'';position:absolute;top:2px;left:2px;width:24px;height:24px;border-radius:12px;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,0.2)}
@@ -38,47 +36,45 @@ h1{font-size:22px;text-align:center}
 .btn:disabled{opacity:.5;cursor:not-allowed}
 .btn.outline{background:transparent;color:#4361ee;border:2px solid #4361ee;margin-top:12px}
 .btn.outline:hover{background:#f0f3ff}
+.btn.green{background:#2ec4b6}
+.btn.green:hover{background:#28a89d}
 .hide{display:none}
-.result-item{margin-bottom:16px}
-.result-item:last-child{margin-bottom:0}
-.result-header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-radius:8px;margin-bottom:8px}
-.result-header.danger{background:#fef2f2;border-left:4px solid #e71d36}
-.result-header.warn{background:#fffbeb;border-left:4px solid #ff9f1c}
-.result-header.safe{background:#f0faf6;border-left:4px solid #2ec4b6}
-.result-header .r-icon{font-size:20px}
-.result-header .r-title{font-weight:600;font-size:14px;flex:1;margin-left:8px}
-.result-header .r-count{font-weight:700;font-size:14px}
-.result-item .r-detail{font-size:13px;color:#666;line-height:1.6;padding:0 14px}
-.result-item .r-penalty{margin-top:6px;padding:8px 12px;background:#fff;border-radius:6px;font-size:12px;border-left:3px solid #e71d36;color:#555;line-height:1.5}
+.verdict{text-align:center;padding:16px 0 20px}
+.verdict-icon{font-size:48px}
+.verdict-text{font-size:20px;font-weight:700;margin:8px 0 4px}
+.verdict-sub{font-size:13px;color:#888}
+.guide-item{background:#f8f9ff;border-radius:10px;padding:14px;margin-bottom:10px}
+.guide-item:last-child{margin-bottom:0}
+.guide-item h4{font-size:14px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.guide-item p{font-size:13px;color:#555;line-height:1.7}
+.guide-item .meta{display:flex;gap:12px;margin-top:6px;font-size:12px;color:#888;flex-wrap:wrap}
+.guide-item .meta span{display:flex;align-items:center;gap:3px}
+.guide-item .risk-box{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;margin-top:6px;font-size:12px;color:#991b1b;line-height:1.5}
 .footer{text-align:center;color:#aaa;font-size:12px;margin-top:24px;line-height:1.8}
-@media(max-width:480px){.industry-grid{grid-template-columns:1fr}.card{padding:20px}}
+@media(max-width:480px){.card{padding:20px}.tag{font-size:13px;padding:6px 10px}}
 </style>
 </head>
 <body>
 <div class="container">
 
-<!-- Step 1: 选行业 -->
-<div class="card" id="step1">
+<div class="card" id="pageHome">
 <h1>🔍 企业合规自查</h1>
-<p class="sub">选择你的行业，系统列出该行业需具备的证照资质<br>勾选已拥有的，自动评估合规风险</p>
-<div class="industry-grid" id="industryGrid"></div>
-<button class="btn" id="nextBtn" disabled onclick="goStep2()">选择行业后继续 → <span id="selectedCount"></span></button>
+<p class="sub">选择行业，系统列出必备证照 → 勾选已有的 → 出合规报告+行动指南</p>
+<div class="tag-wrap" id="tagWrap"></div>
+<button class="btn" id="btnStart" disabled onclick="goCheck()">开始自查 → <span id="selCount"></span></button>
 </div>
 
-<!-- Step 2: 逐项自查 -->
-<div class="card hide" id="step2">
+<div class="card hide" id="pageCheck">
 <h1>📋 逐项自查</h1>
-<p class="sub">勾选你已具备的证照资质</p>
-<div id="checklist"></div>
-<button class="btn" onclick="goStep3()">查看评估结果 →</button>
-<button class="btn outline" onclick="backStep1()">← 重新选择行业</button>
+<p class="sub" id="checkSub">勾选你已具备的证照资质</p>
+<div id="checkList"></div>
+<button class="btn green" onclick="goResult()">查看评估报告 →</button>
+<button class="btn outline" onclick="backHome()">← 重新选择</button>
 </div>
 
-<!-- Step 3: 结果 -->
-<div class="card hide" id="step3">
-<h1>📊 合规评估报告</h1>
-<p class="sub" id="resultSummary"></p>
-<div id="resultContent"></div>
+<div class="card hide" id="pageResult">
+<div id="resultHead"></div>
+<div id="resultBody"></div>
 <button class="btn outline" onclick="resetAll()">← 重新评估</button>
 </div>
 
@@ -87,240 +83,243 @@ h1{font-size:22px;text-align:center}
 
 <script>
 const industries = [
-  {
-    id:'ai', name:'AI/大模型', icon:'🤖',
-    items:[
-      {name:'算法备案',must:true,risk:'高',desc:'有AI推荐/排序/生成功能的必须备案',penalty:'责令整改+罚款；拒不改正最高停服+罚款50万'},
-      {name:'生成式AI备案',must:true,risk:'高',desc:'提供生成式AI服务的必须备案',penalty:'未备案不得上线，违者责令整改+罚款'},
-      {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭'},
-      {name:'ICP许可证',must:false,risk:'中',desc:'有经营性网站/收费服务的需办理',penalty:'无证经营可罚1-3万'},
-      {name:'等级保护（等保2.0）',must:false,risk:'中',desc:'三级系统需做等保测评',penalty:'不通过可能影响招标/融资'},
-      {name:'数据出境安全评估',must:false,risk:'高',desc:'向境外提供数据的需评估',penalty:'违规可罚5000万或上年营收5%'},
-      {name:'软件著作权',must:false,risk:'低',desc:'保护核心代码，高新技术认定需要',penalty:'无直接影响，但影响高新认定'},
-      {name:'EDI许可证',must:false,risk:'中',desc:'在线数据处理/交易处理业务需办',penalty:'无证经营可罚'}
-    ]
+  {id:'ai',name:'AI/大模型',icon:'🤖',
+   items:[
+    {name:'算法备案',must:true,risk:'高',desc:'有AI推荐/排序/生成功能的必须备案',penalty:'责令整改+罚款；拒不改正最高停服+罚款50万',
+     advice:'登录 beian.cac.gov.cn 在线提交备案申请，填写算法信息、安全评估报告等材料。建议在AI功能上线前就启动备案。',
+     timeline:'2-3个月',process:'准备材料→在线提交→网信办审核→取得备案编号'},
+    {name:'生成式AI备案',must:true,risk:'高',desc:'提供生成式AI服务的必须备案',penalty:'未备案不得上线，违者责令整改+罚款',
+     advice:'在CAC备案系统中选择"生成式AI"类别提交。需要提供模型说明、训练数据来源、内容安全措施等。',
+     timeline:'2-3个月',process:'模型安全评估→材料准备→提交CAC→审核通过'},
+    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭',
+     advice:'购买国内服务器后，在服务商控制台提交备案申请（阿里云/腾讯云等都有备案入口）。',
+     timeline:'20个工作日',process:'购买服务器→提交备案申请→管局审核→取得备案号'},
+    {name:'等级保护（等保2.0）',must:false,risk:'中',desc:'三级系统需做等保测评',penalty:'不通过可能影响招标/融资',
+     advice:'联系有资质的等保测评机构进行测评，先做定级备案。三级系统需每年测评一次。',
+     timeline:'2-3个月',process:'定级备案→整改→测评→取得报告'},
+    {name:'数据出境安全评估',must:false,risk:'高',desc:'向境外提供数据的需评估',penalty:'违规可罚5000万或上年营收5%',
+     advice:'通过省级网信办提交数据出境安全评估申请，需准备数据出境风险自评估报告。',
+     timeline:'3-6个月',process:'自评估→提交申请→省网信办初审→国家网信办评估→取得通过'}]
   },
-  {
-    id:'med', name:'医疗器械', icon:'🏥',
-    items:[
-      {name:'医疗器械注册证',must:true,risk:'高',desc:'二类/三类医疗器械上市前必须注册',penalty:'无证生产/销售=违法，罚款+没收+吊销'},
-      {name:'医疗器械经营许可证',must:true,risk:'高',desc:'三类医疗器械经营需办理',penalty:'无证经营可罚货值5-10倍'},
-      {name:'医疗器械网络销售备案',must:true,risk:'高',desc:'线上销售医疗器械需备案',penalty:'未备案不得网售'},
-      {name:'医疗器械生产许可证',must:true,risk:'高',desc:'二类/三类医疗器械生产需办理',penalty:'无证生产=违法'},
-      {name:'ISO 13485认证',must:false,risk:'中',desc:'医疗器械质量管理体系，出口必备',penalty:'没有不能出口'},
-      {name:'CE/MDR认证',must:false,risk:'高',desc:'出口欧盟市场必备',penalty:'无CE标识不得进入欧盟'},
-      {name:'FDA注册',must:false,risk:'高',desc:'出口美国市场必备',penalty:'无FDA不得进入美国'}
-    ]
+  {id:'med',name:'医疗器械',icon:'🏥',
+   items:[
+    {name:'医疗器械注册证',must:true,risk:'高',desc:'二类/三类医疗器械上市前必须注册',penalty:'无证生产/销售=违法，罚款+没收+吊销',
+     advice:'向国家药监局（NMPA）或省药监局提交注册申请。二类找省局，三类找国家局。建议找有经验的注册代理机构协助。',
+     timeline:'1-3年',process:'产品分类→检测→临床评价→提交注册→技术审评→取得注册证'},
+    {name:'医疗器械经营许可证',must:true,risk:'高',desc:'三类医疗器械经营需办理',penalty:'无证经营可罚货值5-10倍',
+     advice:'向所在地市级市场监管局申请。需要有质量负责人、经营场所和仓储条件。',
+     timeline:'1-3个月',process:'准备材料→提交申请→现场核查→发证'},
+    {name:'医疗器械网络销售备案',must:true,risk:'高',desc:'线上销售医疗器械需备案',penalty:'未备案不得网售',
+     advice:'登录国家药监局网络销售备案平台在线办理，需先取得经营许可证/备案凭证。',
+     timeline:'10个工作日',process:'在线填写→提交材料→审核通过→取得备案号'},
+    {name:'医疗器械生产许可证',must:true,risk:'高',desc:'二类/三类医疗器械生产需办理',penalty:'无证生产=违法',
+     advice:'向省药监局申请。需要符合GMP要求，有生产场地、设备和质量体系。',
+     timeline:'3-6个月',process:'体系建立→提交申请→现场检查→发证'},
+    {name:'CE/MDR认证',must:false,risk:'高',desc:'出口欧盟市场必备',penalty:'无CE标识不得进入欧盟',
+     advice:'选择公告机构（Notified Body）进行CE认证。不同产品类别对应不同认证路径。',
+     timeline:'6-12个月',process:'技术文件准备→选择公告机构→审核→取得CE证书'}]
   },
-  {
-    id:'pharma', name:'生物医药/创新药', icon:'💊',
-    items:[
-      {name:'药品注册证书',must:true,risk:'高',desc:'新药上市前必须取得药品注册证',penalty:'无证生产/销售=假药论处'},
-      {name:'GMP认证',must:true,risk:'高',desc:'药品生产质量管理规范认证',penalty:'未通过GMP不得生产'},
-      {name:'药品经营许可证',must:true,risk:'中',desc:'药品批发/零售需办理',penalty:'无证经营=违法'},
-      {name:'药物临床试验批件',must:true,risk:'高',desc:'临床试验前必须取得',penalty:'违规开展临床试验可罚'},
-      {name:'GSP认证',must:false,risk:'中',desc:'药品经营质量管理规范',penalty:'未通过影响经营'}
-    ]
+  {id:'pharma',name:'生物医药/创新药',icon:'💊',
+   items:[
+    {name:'药品注册证书',must:true,risk:'高',desc:'新药上市前必须取得注册证',penalty:'无证生产/销售=假药论处',
+     advice:'向国家药监局药品审评中心（CDE）提交注册申请。流程复杂，建议聘请专业注册团队。',
+     timeline:'2-5年',process:'临床前研究→IND申请→临床试验→NDA提交→审评→取得注册证'},
+    {name:'GMP认证',must:true,risk:'高',desc:'药品生产质量管理规范认证',penalty:'未通过GMP不得生产',
+     advice:'向省药监局申请GMP符合性检查。需要建立完整的质量管理体系。',
+     timeline:'6-12个月',process:'厂房建设→体系建立→自检→提交申请→现场检查→通过'},
+    {name:'药品经营许可证',must:true,risk:'中',desc:'药品批发/零售需办理',penalty:'无证经营=违法',
+     advice:'向当地药监局申请。需有执业药师、经营场所和质量管理体系。',
+     timeline:'1-3个月',process:'准备材料→提交→现场验收→发证'}]
   },
-  {
-    id:'newenergy', name:'新能源/汽车', icon:'⚡',
-    items:[
-      {name:'新能源汽车生产资质',must:true,risk:'高',desc:'新建纯电动乘用车生产企业需核准',penalty:'无资质不得生产'},
-      {name:'车辆CCC认证',must:true,risk:'高',desc:'上市销售前必须通过CCC认证',penalty:'无CCC认证不得销售'},
-      {name:'道路机动车辆生产企业准入',must:true,risk:'高',desc:'生产车辆的企业需工信部准入',penalty:'未准入不得生产'},
-      {name:'新能源汽车补贴资质',must:false,risk:'中',desc:'申请国家补贴需进入推荐目录',penalty:'未进入目录拿不到补贴'},
-      {name:'动力电池回收资质',must:false,risk:'中',desc:'生产电池需建立回收体系',penalty:'不合规可能影响生产资质'}
-    ]
+  {id:'ne',name:'新能源/汽车',icon:'⚡',
+   items:[
+    {name:'新能源汽车生产资质',must:true,risk:'高',desc:'新建纯电动乘用车生产企业需核准',penalty:'无资质不得生产',
+     advice:'向国家发改委和工信部提交准入申请。难度极高，近年来仅少数企业获批。',
+     timeline:'1-2年',process:'项目备案→工厂建设→产品检测→提交准入申请→现场审查→公告'},
+    {name:'车辆CCC认证',must:true,risk:'高',desc:'上市销售前必须通过CCC认证',penalty:'无CCC认证不得销售',
+     advice:'向中国质量认证中心（CQC）申请CCC认证。需送样检测+工厂检查。',
+     timeline:'3-6个月',process:'送样检测→工厂检查→综合评定→发证'},
+    {name:'新能源汽车补贴资质',must:false,risk:'中',desc:'申请国家补贴需进入推荐目录',penalty:'未进入目录拿不到补贴',
+     advice:'确保产品符合《新能源汽车推广应用推荐车型目录》技术要求，通过检测后由工信部发布。',
+     timeline:'3-6个月',process:'产品检测→提交申请→技术审查→目录公告'}]
   },
-  {
-    id:'semicon', name:'半导体/芯片', icon:'🔬',
-    items:[
-      {name:'进出口经营备案',must:true,risk:'高',desc:'涉及设备/材料进出口需备案',penalty:'未备案不得进出口'},
-      {name:'两用物项出口许可',must:true,risk:'高',desc:'涉及管制物项出口需许可证',penalty:'违规出口=走私，可刑事追责'},
-      {name:'高新技术企业认定',must:false,risk:'中',desc:'享受15%企业所得税优惠',penalty:'无非强制性，但影响税收优惠'},
-      {name:'集成电路企业认定',must:false,risk:'中',desc:'享受所得税减免+增值税优惠',penalty:'未认定无法享受政策红利'},
-      {name:'ISO 9001认证',must:false,risk:'低',desc:'质量管理体系认证',penalty:'无直接影响'}
-    ]
+  {id:'sc',name:'半导体/芯片',icon:'🔬',
+   items:[
+    {name:'进出口经营备案',must:true,risk:'高',desc:'涉及设备/材料进出口需备案',penalty:'未备案不得进出口',
+     advice:'向商务局办理对外贸易经营者备案。拿到备案表后再去海关、外汇局、税务局办理后续手续。',
+     timeline:'1-2周',process:'商务局备案→海关登记→外汇登记→税务备案'},
+    {name:'两用物项出口许可',must:true,risk:'高',desc:'涉及管制物项出口需许可证',penalty:'违规出口=走私，可刑事追责',
+     advice:'向商务部产业安全与进出口管制局申请。建议先自查产品是否在管制清单内。',
+     timeline:'2-6个月',process:'自查→提交申请→商务部审查→发证'},
+    {name:'高新技术企业认定',must:false,risk:'中',desc:'享受15%企业所得税优惠',penalty:'无非强制性，但影响税收优惠',
+     advice:'向当地科技部门提交认定申请。核心条件：成立1年+、知识产权、研发费用达标。',
+     timeline:'3-6个月',process:'自评→材料准备→提交→专家评审→公示→拿证'}]
   },
-  {
-    id:'food', name:'餐饮/零售', icon:'🍜',
-    items:[
-      {name:'食品经营许可证',must:true,risk:'高',desc:'从事食品销售/餐饮服务必须办理',penalty:'无证经营可罚5万以上'},
-      {name:'营业执照',must:true,risk:'高',desc:'任何经营活动必须办理',penalty:'无照经营=违法'},
-      {name:'卫生许可证',must:true,risk:'高',desc:'餐饮服务需办理公共卫生许可',penalty:'无证经营可罚'},
-      {name:'消防验收',must:true,risk:'高',desc:'实体店面需通过消防验收',penalty:'不通过不得开业'},
-      {name:'健康证',must:true,risk:'中',desc:'从业人员需办理健康证明',penalty:'无健康证可罚'},
-      {name:'排污许可',must:false,risk:'中',desc:'有油烟排放的餐饮需办理',penalty:'违规排放可罚'}
-    ]
+  {id:'food',name:'餐饮/零售',icon:'🍜',
+   items:[
+    {name:'食品经营许可证',must:true,risk:'高',desc:'从事食品销售/餐饮服务必须办理',penalty:'无证经营可罚5万以上',
+     advice:'向当地市场监管局申请。需有符合要求的经营场所、设备设施和从业人员健康证。',
+     timeline:'10-20个工作日',process:'培训→提交申请→现场核查→发证'},
+    {name:'卫生许可证',must:true,risk:'高',desc:'餐饮服务需办理公共卫生许可',penalty:'无证经营可罚',
+     advice:'向当地卫健委申请。需提供场所卫生检测报告和从业人员健康证明。',
+     timeline:'10个工作日',process:'检测→提交→审查→发证'},
+    {name:'消防验收',must:true,risk:'高',desc:'实体店面需通过消防验收',penalty:'不通过不得开业',
+     advice:'向当地消防救援机构申报。建议装修前就咨询消防要求，避免返工。',
+     timeline:'1-2个月',process:'设计审核→施工→验收申报→现场检查→合格'},
+    {name:'健康证',must:true,risk:'中',desc:'从业人员需办理健康证明',penalty:'无健康证可罚',
+     advice:'到当地疾控中心或指定医院体检办理。一般1-3个工作日可取。',
+     timeline:'1-3个工作日',process:'体检→合格→发证'}]
   },
-  {
-    id:'ecom', name:'电商/跨境电商', icon:'🛒',
-    items:[
-      {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭'},
-      {name:'EDI许可证',must:true,risk:'中',desc:'在线数据处理/交易处理需办理',penalty:'无证经营可罚'},
-      {name:'食品经营许可证',must:false,risk:'高',desc:'卖食品需办理',penalty:'无证经营可罚5万以上'},
-      {name:'进出口经营备案',must:false,risk:'中',desc:'做跨境电商需备案',penalty:'未备案不得进出口'},
-      {name:'商标注册',must:false,risk:'低',desc:'保护品牌，平台入驻需要',penalty:'无商标可能被抢注'}
-    ]
+  {id:'ecom',name:'电商/跨境电商',icon:'🛒',
+   items:[
+    {name:'EDI许可证',must:true,risk:'中',desc:'在线数据处理/交易处理需办理',penalty:'无证经营可罚',
+     advice:'向省通信管理局申请。要求公司注册资金100万以上（认缴即可），有专业技术人员。',
+     timeline:'2-3个月',process:'材料准备→网上提交→省通管局审核→发证'},
+    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭',
+     advice:'购买国内服务器后，在服务商控制台提交备案申请。',
+     timeline:'20个工作日',process:'购买服务器→提交备案→管局审核→取得备案号'},
+    {name:'进出口经营备案',must:false,risk:'中',desc:'做跨境电商需备案',penalty:'未备案不得进出口',
+     advice:'向商务局办理对外贸易经营者备案，然后去海关、外汇局办理相关手续。',
+     timeline:'1-2周',process:'商务局备案→海关备案→外汇备案'}]
   },
-  {
-    id:'software', name:'软件/IT服务', icon:'💻',
-    items:[
-      {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭'},
-      {name:'软件著作权',must:false,risk:'低',desc:'保护核心代码',penalty:'无直接影响'},
-      {name:'高新技术企业认定',must:false,risk:'中',desc:'享受15%企业所得税优惠',penalty:'无非强制性'},
-      {name:'ISO 9001认证',must:false,risk:'低',desc:'质量管理体系（招投标需要）',penalty:'无直接影响'},
-      {name:'等级保护',must:false,risk:'中',desc:'涉及用户数据的系统需等保',penalty:'影响招投标/合规审查'}
-    ]
+  {id:'it',name:'软件/IT服务',icon:'💻',
+   items:[
+    {name:'ICP备案',must:true,risk:'中',desc:'所有网站必须ICP备案',penalty:'未备案网站被责令关闭',
+     advice:'购买国内服务器后，在服务商控制台提交备案申请。',
+     timeline:'20个工作日',process:'购买服务器→提交备案→管局审核→取得备案号'},
+    {name:'高新技术企业认定',must:false,risk:'中',desc:'享受15%企业所得税优惠',penalty:'无非强制性',
+     advice:'向当地科技部门提交申请。互联网/软件企业通常较容易通过。',
+     timeline:'3-6个月',process:'自评→材料→提交→评审→公示→拿证'},
+    {name:'等级保护',must:false,risk:'中',desc:'涉及用户数据的系统需等保',penalty:'影响招投标/合规审查',
+     advice:'联系等保测评机构进行测评。SaaS产品通常需要三级等保。',
+     timeline:'2-3个月',process:'定级→整改→测评→报告'}]
   }
 ];
 
 let selected = [];
 
 function init(){
-  const grid = document.getElementById('industryGrid');
+  const wrap = document.getElementById('tagWrap');
   industries.forEach((ind,i)=>{
-    const mustCount = ind.items.filter(x=>x.must).length;
-    grid.innerHTML += `<div class="industry-card" onclick="toggleIndustry(${i})" id="ind${i}">
-      <div class="icon">${ind.icon}</div>
-      <div class="name">${ind.name}</div>
-      <div class="count">${mustCount}项必备 · ${ind.items.length}项总计</div>
-    </div>`;
+    const must = ind.items.filter(x=>x.must).length;
+    wrap.innerHTML += `<div class="tag" onclick="toggleInd(${i})" id="t${i}">${ind.icon} ${ind.name} <span class="count-badge">${must}项必备</span></div>`;
   });
 }
 
-function toggleIndustry(i){
+function toggleInd(i){
   const idx = selected.indexOf(i);
   if(idx>=0) selected.splice(idx,1);
   else selected.push(i);
-  document.getElementById('ind'+i).classList.toggle('selected');
-  const btn = document.getElementById('nextBtn');
+  document.getElementById('t'+i).classList.toggle('selected');
+  const btn = document.getElementById('btnStart');
   btn.disabled = selected.length===0;
-  document.getElementById('selectedCount').textContent = selected.length>0 ? `（已选${selected.length}个行业）` : '';
+  document.getElementById('selCount').textContent = selected.length>0 ? `（已选${selected.length}个行业）` : '';
 }
 
-function goStep2(){
-  document.getElementById('step1').classList.add('hide');
-  document.getElementById('step2').classList.remove('hide');
-  renderChecklist();
-}
-
-function backStep1(){
-  document.getElementById('step2').classList.add('hide');
-  document.getElementById('step1').classList.remove('hide');
-}
-
-function renderChecklist(){
-  const container = document.getElementById('checklist');
-  container.innerHTML = '';
+function goCheck(){
+  document.getElementById('pageHome').classList.add('hide');
+  document.getElementById('pageCheck').classList.remove('hide');
+  let names = selected.map(i=>industries[i].name).join('、');
+  document.getElementById('checkSub').textContent = `行业：${names}`;
+  
+  const cl = document.getElementById('checkList');
+  cl.innerHTML = '';
   selected.forEach(idx=>{
     const ind = industries[idx];
-    let html = `<div class="section-title">${ind.icon} ${ind.name}</div>`;
+    let h = `<div class="section-title">${ind.icon} ${ind.name}</div>`;
     ind.items.forEach((item,i)=>{
-      const id = `c_${idx}_${i}`;
-      html += `<div class="check-item">
+      const id = `ck_${idx}_${i}`;
+      const cls = item.must?'badge-red':'badge-ora';
+      h += `<div class="check-item">
         <div class="info">
-          <div class="name">
-            ${item.name}
-            <span class="risk-tag ${item.risk==='高'?'risk-high':item.risk==='中'?'risk-mid':'risk-low'}">${item.must?'必备':'建议'}</span>
-          </div>
+          <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
           <div class="desc">${item.desc}</div>
         </div>
-        <div class="toggle" id="${id}" onclick="toggleCheck('${id}')"></div>
+        <div class="toggle" id="${id}" onclick="tog('${id}')"></div>
       </div>`;
     });
-    container.innerHTML += html;
+    cl.innerHTML += h;
   });
 }
 
-// Store checked states
 const checked = {};
-
-function toggleCheck(id){
-  const el = document.getElementById(id);
-  const isOn = el.classList.toggle('on');
-  checked[id] = isOn;
+function tog(id){
+  document.getElementById(id).classList.toggle('on');
+  checked[id] = !checked[id];
 }
 
-function goStep3(){
-  document.getElementById('step2').classList.add('hide');
-  document.getElementById('step3').classList.remove('hide');
+function goResult(){
+  document.getElementById('pageCheck').classList.add('hide');
+  document.getElementById('pageResult').classList.remove('hide');
   
-  let totalMust = 0, totalChecked = 0, totalRisk = 0;
-  let results = [];
-  
+  let missing = [], allMust = 0, haveMust = 0;
   selected.forEach(idx=>{
-    const ind = industries[idx];
-    const missing = [];
-    ind.items.forEach((item,i)=>{
-      const id = `c_${idx}_${i}`;
-      const has = checked[id] || false;
-      if(item.must) totalMust++;
-      if(has) totalChecked++;
-      if(item.must && !has){
-        totalRisk++;
-        missing.push(item);
-      }
+    industries[idx].items.forEach((item,i)=>{
+      const id = `ck_${idx}_${i}`;
+      const has = checked[id]||false;
+      if(item.must) allMust++;
+      if(has && item.must) haveMust++;
+      if(item.must && !has) missing.push({ind:industries[idx], item});
     });
-    if(missing.length>0){
-      results.push({ind, missing, status: 'danger'});
-    }else{
-      results.push({ind, missing:[], status: 'safe'});
-    }
   });
   
-  // Summary
-  const summary = document.getElementById('resultSummary');
-  if(totalRisk===0){
-    summary.textContent = `✅ 所选${selected.length}个行业，${totalMust}项必备资质全部具备，合规状态良好`;
-    summary.style.color = '#2ec4b6';
+  const head = document.getElementById('resultHead');
+  if(missing.length===0){
+    head.innerHTML = `<div class="verdict">
+      <div class="verdict-icon">✅</div>
+      <div class="verdict-text" style="color:#2ec4b6">完全合规</div>
+      <div class="verdict-sub">所选${selected.length}个行业，${allMust}项必备资质全部具备</div>
+    </div>`;
   }else{
-    summary.textContent = `⚠️ 发现 ${totalRisk} 项必备资质缺失，存在合规风险，请尽快补办`;
-    summary.style.color = '#e71d36';
+    const pct = Math.round((allMust-missing.length)/allMust*100);
+    head.innerHTML = `<div class="verdict">
+      <div class="verdict-icon">❌</div>
+      <div class="verdict-text" style="color:#e71d36">不合规</div>
+      <div class="verdict-sub">缺少 ${missing.length}/${allMust} 项必备资质 · 合规率 ${pct}%</div>
+    </div>`;
   }
   
-  let resultHTML = '';
-  results.forEach(r=>{
-    const ind = r.ind;
-    if(r.missing.length===0){
-      resultHTML += `<div class="result-item">
-        <div class="result-header safe">
-          <span class="r-icon">✅</span>
-          <span class="r-title">${ind.icon} ${ind.name}</span>
-          <span class="r-count">全部合规</span>
-        </div>
-      </div>`;
-    }else{
-      resultHTML += `<div class="result-item">
-        <div class="result-header danger">
-          <span class="r-icon">❌</span>
-          <span class="r-title">${ind.icon} ${ind.name}</span>
-          <span class="r-count">缺失 ${r.missing.length} 项</span>
-        </div>`;
-      r.missing.forEach(item=>{
-        resultHTML += `<div class="r-detail" style="padding:8px 14px 0">
-          <strong>${item.name}</strong>（${item.risk==='高'?'高风险':item.risk==='中'?'中风险':'低风险'}）
-          <div style="margin-top:2px">${item.desc}</div>
-        </div>
-        <div class="r-penalty">⚠️ 风险：${item.penalty}</div>`;
-      });
-      resultHTML += '</div>';
-    }
+  if(missing.length===0){
+    document.getElementById('resultBody').innerHTML = `<div class="section-title">✅ 建议</div>
+    <div class="guide-item"><p>建议定期关注政策变化，确保持续合规。建议保留所有证照原件备查，到期前及时续期。</p></div>`;
+    window.scrollTo({top:0,behavior:'smooth'});
+    return;
+  }
+  
+  let body = '<div class="section-title">⚠️ 需要补办的资质</div>';
+  missing.forEach((m,i)=>{
+    const item = m.item;
+    const ind = m.ind;
+    const riskColor = item.risk==='高'?'#e71d36':item.risk==='中'?'#ff9f1c':'#2ec4b6';
+    body += `<div class="guide-item">
+      <h4>${i+1}. ${ind.icon} ${item.name} <span style="color:${riskColor};font-weight:600;font-size:12px">${item.risk}风险</span></h4>
+      <p>${item.advice}</p>
+      <div class="meta">
+        <span>⏱ 办理时间：${item.timeline}</span>
+        <span>📋 流程：${item.process}</span>
+      </div>
+      <div class="risk-box">⚠️ 不办的后果：${item.penalty}</div>
+    </div>`;
   });
   
-  document.getElementById('resultContent').innerHTML = resultHTML;
+  document.getElementById('resultBody').innerHTML = body;
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function backHome(){
+  document.getElementById('pageCheck').classList.add('hide');
+  document.getElementById('pageHome').classList.remove('hide');
 }
 
 function resetAll(){
   selected = [];
   Object.keys(checked).forEach(k=>delete checked[k]);
   document.querySelectorAll('.toggle.on').forEach(el=>el.classList.remove('on'));
-  document.querySelectorAll('.industry-card.selected').forEach(el=>el.classList.remove('selected'));
-  document.getElementById('nextBtn').disabled = true;
-  document.getElementById('selectedCount').textContent = '';
-  document.getElementById('step3').classList.add('hide');
-  document.getElementById('step1').classList.remove('hide');
+  document.querySelectorAll('.tag.selected').forEach(el=>el.classList.remove('selected'));
+  document.getElementById('btnStart').disabled = true;
+  document.getElementById('selCount').textContent = '';
+  document.getElementById('pageResult').classList.add('hide');
+  document.getElementById('pageHome').classList.remove('hide');
 }
 
 init();
