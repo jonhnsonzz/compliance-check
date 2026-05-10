@@ -4,6 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>企业合规自查 — 证照办理指南</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "企业合规自查",
+  "description": "免费在线企业合规自查工具，选择行业一键生成个性化证照清单、办理步骤和合规评分，覆盖餐饮、电商、教育等20+行业",
+  "url": "https://jonhnsonzz.github.io/compliance-check/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"},
+  "isAccessibleForFree": true,
+  "author": {"@type": "Person", "name": "石子哥"}
+}
+</script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f0f2f5;color:#1a1a2e;padding:20px}
@@ -14,12 +29,9 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 .form-group{margin-bottom:16px}
 .form-group label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;color:#333}
 .form-group select{width:100%;padding:11px 12px;border:2px solid #e0e0e0;border-radius:10px;font-size:14px;background:#fff;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-<<<<<<< HEAD
 .form-group select[multiple]{-webkit-appearance:none;appearance:none;background-image:none;height:auto;padding:6px}
 .form-group select[multiple] option{padding:8px 10px;border-radius:6px;margin:2px;cursor:pointer}
 .form-group select[multiple] option:checked{background:#4361ee;color:#fff;font-weight:600}
-=======
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
 .form-group select:focus{outline:none;border-color:#4361ee}
 .btn{display:block;width:100%;padding:13px;background:#4361ee;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;text-align:center;transition:background .2s}
 .btn:hover{background:#3651d4}
@@ -53,15 +65,10 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 .guide-item .meta{display:flex;gap:16px;margin-top:6px;font-size:12px;color:#888;flex-wrap:wrap}
 .guide-item .meta span{display:flex;align-items:center;gap:3px}
 .guide-item .risk-box{background:#fef2f2;border:1px solid #fecaca;border-radius:6px;padding:8px 10px;margin-top:8px;font-size:12px;color:#991b1b;line-height:1.5}
-<<<<<<< HEAD
 .guide-item .btn-guide{display:block;width:100%;padding:10px;margin-top:10px;background:#eef2ff;color:#4361ee;border:1.5px solid #c7d2fe;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:all .2s}
 .guide-item .btn-guide:hover{background:#dde4ff;border-color:#4361ee}
 .guide-item .btn-guide .arrow{display:inline-block;transition:transform .3s;margin-left:4px}
 .guide-item .btn-guide .arrow.open{transform:rotate(180deg)}
-=======
-.guide-item .expand-icon{float:right;font-size:12px;color:#4361ee;transition:transform .3s}
-.guide-item .expand-icon.open{transform:rotate(180deg)}
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
 /* 展开详情 */
 .detail-box{display:none;margin-top:12px;padding-top:12px;border-top:1px solid #e0e0e0}
 .detail-box.show{display:block}
@@ -86,13 +93,8 @@ h1{font-size:22px;text-align:center;margin-bottom:4px}
 <h1>🔍 企业合规自查</h1>
 <p class="sub">选行业 → 勾证照 → 出具报告+办理指南</p>
 <div class="form-group">
-<<<<<<< HEAD
 <label>选择行业（按住 Ctrl 可多选）</label>
 <select id="indSelect" multiple>
-=======
-<label>选择行业</label>
-<select id="indSelect">
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
 <option value="">— 请选择行业 —</option>
 <option value="0">🤖 AI/大模型</option>
 <option value="1">🏥 医疗器械</option>
@@ -355,7 +357,6 @@ const industries = [
       '5. CQC综合评定，确认发证与否',
       '6. 获证后每年接受监督检查'],
      cost:'检测费+评审费约20-50万，后续年检费约3-5万/年',
-<<<<<<< HEAD
      tips:'CCC认证是车辆上路销售的准入门槛，必须在车辆公告之后、上市之前完成。申请前建议做一次预检测。'},
     {name:'充电设施建设许可',must:true,risk:'中',
      desc:'建设充电基础设施需办理相关审批',
@@ -404,9 +405,6 @@ const industries = [
       '8. 项目建设完成后进行环保竣工验收'],
      cost:'环评编制费视项目规模1-10万，验收检测费约1-5万',
      tips:'新能源汽车生产工厂和充电设施建设均需环评。装修类项目（不涉及土建和污染排放）通常只需填报登记表，流程简单。建议在选址阶段就咨询环评要求，避免选址在环境敏感区。'}]
-=======
-     tips:'CCC认证是车辆上路销售的准入门槛，必须在车辆公告之后、上市之前完成。申请前建议做一次预检测。'}]
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   },
   {name:'半导体/芯片',icon:'🔬',
    items:[
@@ -439,7 +437,6 @@ const industries = [
       '5. 商务部审查（一般45个工作日，复杂情况可延长）',
       '6. 获证后报关出口，许可证单次有效'],
      cost:'免费的政府服务',
-<<<<<<< HEAD
      tips:'纳米级光刻机、EDA软件、特定半导体材料等属于管制物项。判断不准确的风险极大，建议找专业合规律师做物项判定。误出口管制物项可能触发刑事责任。'},
     {name:'集成电路设计企业认定',must:false,risk:'中',
      desc:'认定后享受企业所得税"两免三减半"优惠',
@@ -474,9 +471,6 @@ const industries = [
       '8. 项目建设完成后进行环保竣工验收（含废气、废水、噪声、危废等监测）'],
      cost:'环评编制费视项目规模5-30万，验收监测费约3-10万',
      tips:'半导体晶圆制造厂和封装测试厂属于重污染项目（视同化工类），环评要求极高。设计和研发类的芯片公司（无生产环节）通常只需填报环评登记表，流程简单。建议在选址阶段就进行环评预评估。'}]
-=======
-     tips:'纳米级光刻机、EDA软件、特定半导体材料等属于管制物项。判断不准确的风险极大，建议找专业合规律师做物项判定。误出口管制物项可能触发刑事责任。'}]
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   },
   {name:'餐饮/零售',icon:'🍜',
    items:[
@@ -608,7 +602,6 @@ const industries = [
       '6. 评审通过后进行公示（10个工作日），无异议后发证',
       '7. 证书有效期3年，到期前需重新认定'],
      cost:'专项审计费约1-3万，认定成功后企业所得税从25%降至15%',
-<<<<<<< HEAD
      tips:'软件企业做高新认定有天然优势。关键是研发费用归集要规范（研发费用占比>5%取决于收入规模）。知识产权必须是近3年内取得的。软著申请快（1-3个月），临时补也来得及。'},
     {name:'软件著作权登记',must:true,risk:'中',
      desc:'软件产品需进行著作权登记以保护知识产权',
@@ -641,40 +634,22 @@ const industries = [
       '6. 取得报告后定期维护，二级系统建议每两年测评一次'],
      cost:'测评费约3-8万（二级），整改费视情况1-20万',
      tips:'等保二级是软件IT服务企业参与政企项目投标的常见门槛。如果客户主要是中小企业或C端用户，可以暂缓不做。如果计划参与政府项目或金融行业项目，建议提前准备。'}]
-=======
-     tips:'软件企业做高新认定有天然优势。关键是研发费用归集要规范（研发费用占比>5%取决于收入规模）。知识产权必须是近3年内取得的。软著申请快（1-3个月），临时补也来得及。'}]
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   }
 ];
 
 // ===================== 页面逻辑 =====================
 const checked = {};
 
-<<<<<<< HEAD
 function init(){}
 
 function goCheck(){
   const sel = document.getElementById('indSelect');
   const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value)).filter(i => !isNaN(i));
   if(idxs.length===0){alert('请至少选择一个行业');return;}
-=======
-function init(){
-  const sel = document.getElementById('indSelect');
-  sel.onchange = function(){
-    document.getElementById('btnStart').disabled = this.value === '';
-  };
-}
-
-function goCheck(){
-  const sel = document.getElementById('indSelect');
-  const idx = parseInt(sel.value);
-  if(isNaN(idx)) return;
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
 
   document.getElementById('pageHome').classList.add('hide');
   document.getElementById('pageCheck').classList.remove('hide');
 
-<<<<<<< HEAD
   const inds = idxs.map(i=>industries[i]);
   document.getElementById('checkSub').textContent = '行业：' + inds.map(i=>i.icon+i.name).join('、');
 
@@ -694,24 +669,6 @@ function goCheck(){
         <div class="toggle${defOn}" id="${id}" onclick="tog('${id}')"></div>
       </div>`;
     });
-=======
-  const ind = industries[idx];
-  document.getElementById('checkSub').textContent = '行业：' + ind.icon + ' ' + ind.name;
-
-  const cl = document.getElementById('checkList');
-  let h = `<div class="section-title">${ind.icon} ${ind.name}（共${ind.items.length}项）</div>`;
-  ind.items.forEach((item,i)=>{
-    const id = `ck_${i}`;
-    const cls = item.must?'badge-red':'badge-ora';
-    const defOn = checked[id]?' on':'';
-    h += `<div class="check-item">
-      <div class="info">
-        <div class="name">${item.name} <span class="badge ${cls}">${item.must?'必备':'建议'}</span></div>
-        <div class="desc">${item.desc}</div>
-      </div>
-      <div class="toggle${defOn}" id="${id}" onclick="tog('${id}')"></div>
-    </div>`;
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   });
   cl.innerHTML = h;
 }
@@ -723,19 +680,13 @@ function tog(id){
 
 function goResult(){
   const sel = document.getElementById('indSelect');
-<<<<<<< HEAD
   const idxs = Array.from(sel.selectedOptions).map(o=>parseInt(o.value)).filter(i => !isNaN(i));
   const inds = idxs.map(i=>industries[i]);
-=======
-  const idx = parseInt(sel.value);
-  const ind = industries[idx];
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
 
   document.getElementById('pageCheck').classList.add('hide');
   document.getElementById('pageResult').classList.remove('hide');
 
   let missing = [], allMust = 0, haveMust = 0;
-<<<<<<< HEAD
   inds.forEach((ind,ii)=>{
     ind.items.forEach((item,i)=>{
       const id = `ck_${ii}_${i}`;
@@ -743,13 +694,6 @@ function goResult(){
       if(checked[id] && item.must) haveMust++;
       if(item.must && !checked[id]) missing.push(item);
     });
-=======
-  ind.items.forEach((item,i)=>{
-    const id = `ck_${i}`;
-    if(item.must) allMust++;
-    if(checked[id] && item.must) haveMust++;
-    if(item.must && !checked[id]) missing.push(item);
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   });
 
   const head = document.getElementById('resultHead');
@@ -757,11 +701,7 @@ function goResult(){
     head.innerHTML = `<div class="verdict">
       <div class="verdict-icon">✅</div>
       <div class="verdict-text" style="color:#2ec4b6">完全合规</div>
-<<<<<<< HEAD
       <div class="verdict-sub">${inds.map(i=>i.icon+i.name).join('、')} · ${allMust}项必备资质全部具备</div>
-=======
-      <div class="verdict-sub">${ind.icon} ${ind.name} · ${allMust}项必备资质全部具备</div>
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
     </div>
     <div class="guide-item"><p>建议定期关注政策变化，证照到期前及时续期。</p></div>`;
     document.getElementById('resultBody').innerHTML = '';
@@ -771,33 +711,20 @@ function goResult(){
       <div class="verdict-icon">❌</div>
       <div class="verdict-text" style="color:#e71d36">不合规</div>
       <div class="verdict-sub">缺少 ${missing.length}/${allMust} 项必备资质 · 合规率 ${pct}%</div>
-      <div class="ind-tag">${ind.icon} ${ind.name}</div>
     </div>`;
 
-<<<<<<< HEAD
     let body = '<div class="section-title">⚠️ 需要补办的资质</div>';
     missing.forEach((item,i)=>{
       const rc = item.risk==='高'?'#e71d36':item.risk==='中'?'#ff9f1c':'#2ec4b6';
       body += `<div class="guide-item">
         <h4>${i+1}. ${item.name} <span style="color:${rc};font-size:12px">${item.risk}风险</span></h4>
-=======
-    let body = '<div class="section-title">⚠️ 需要补办的资质（点击展开详情）</div>';
-    missing.forEach((item,i)=>{
-      const rc = item.risk==='高'?'#e71d36':item.risk==='中'?'#ff9f1c':'#2ec4b6';
-      body += `<div class="guide-item" onclick="toggleDetail('detail_${i}')">
-        <h4>${i+1}. ${item.name} <span style="color:${rc};font-size:12px">${item.risk}风险</span>
-          <span class="expand-icon" id="icon_${i}">▼</span></h4>
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
         <div class="summary">${item.advice}</div>
         <div class="meta">
           <span>⏱ ${item.time}</span>
           <span>📋 ${item.proc}</span>
         </div>
         <div class="risk-box">⚠️ 不办的后果：${item.penalty}</div>
-<<<<<<< HEAD
         <button class="btn-guide" onclick="toggleDetail('detail_${i}')">💡 这件事怎么办？<span class="arrow" id="icon_${i}">▼</span></button>
-=======
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
         <div class="detail-box" id="detail_${i}">
           <div class="dl">
             <div class="dl-item">
@@ -844,13 +771,8 @@ function backHome(){
 function resetAll(){
   Object.keys(checked).forEach(k=>delete checked[k]);
   document.querySelectorAll('.toggle.on').forEach(el=>el.classList.remove('on'));
-<<<<<<< HEAD
   Array.from(document.getElementById('indSelect').options).forEach(o=>o.selected=false);
 
-=======
-  document.getElementById('indSelect').value = '';
-  document.getElementById('btnStart').disabled = true;
->>>>>>> b9919e6 (首页改下拉单选 + 结果页点击展开详情（材料/部门/流程/费用/避坑）)
   document.getElementById('pageResult').classList.add('hide');
   document.getElementById('pageHome').classList.remove('hide');
 }
